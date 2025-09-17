@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Huella de Carbono - Kodyan HQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --koy-bg-light: #f8fafc;
+            --koy-text-dark: #0f172a;
+            --koy-text-medium: #334155;
+            --koy-text-light: #64748b;
+            --koy-primary: #28736e;
+            --koy-primary-light: #38b2ac;
+            --koy-highlight: #00ffd1;
+            --koy-accent: #2563eb;
+            --koy-border: #cbd5e1;
+            --koy-card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--koy-primary) 0%, var(--koy-primary-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--koy-card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            color: var(--koy-text-dark);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--koy-highlight);
+        }
+        
+        h1 {
+            color: var(--koy-primary);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        p {
+            color: var(--koy-text-medium);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .koy-logo {
+            font-size: 2.5rem;
+            color: var(--koy-primary);
+            margin-bottom: 20px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid var(--koy-border);
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--koy-bg-light);
+            color: var(--koy-text-dark);
+            transition: all 0.3s ease;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--koy-primary);
+            box-shadow: 0 0 0 3px rgba(40, 115, 110, 0.2);
+        }
+        
+        button {
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            background: var(--koy-primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        button:hover {
+            background: var(--koy-primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .brand {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--koy-border);
+            color: var(--koy-text-light);
+            font-size: 0.9rem;
+        }
+        
+        .brand strong {
+            color: var(--koy-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="koy-logo">
+            <i class="fas fa-leaf"></i>
+        </div>
+        
+        <h1>Calculadora de Huella de Carbono</h1>
+        <p>¡Empecemos por tu edad! Seleccioná tu rango para continuar</p>
+        
+        <select id="edad">
+            <option value="">-- Seleccioná tu edad --</option>
+            <option value="ninos">6 a 12 años</option>
+            <option value="jovenes">13 a 18 años</option>
+            <option value="adultos">19 años o más</option>
+        </select>
+        
+        <button onclick="irACalculadora()">
+            <i class="fas fa-arrow-right"></i> CONTINUAR
+        </button>
+        
+        <div class="brand">
+            Una herramienta de <strong>Kodyan HQ</strong>
+        </div>
+    </div>
+
+    <script>
+        function irACalculadora() {
+            const edad = document.getElementById('edad').value;
+            if (!edad) {
+                alert("¡Seleccioná tu edad para continuar!");
+                return;
+            }
+            window.location.href = edad + ".html";
+        }
+        
+        // Enter key support
+        document.getElementById('edad').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                irACalculadora();
+            }
+        });
+    </script>
+</body>
+</html>
