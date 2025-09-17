@@ -1170,7 +1170,6 @@
                 homeProgress: document.getElementById('homeProgress'),
                 transportProgress: document.getElementById('transportProgress'),
                 comparisons: document.getElementById('comparisons'),
-                achievements: document.getElementById('achievements'),
                 shareWhatsApp: document.getElementById('shareWhatsApp'),
                 shareInstagram: document.getElementById('shareInstagram'),
                 shareTwitter: document.getElementById('shareTwitter'),
@@ -1483,9 +1482,7 @@
                 // Mostrar comparativas visuales mejoradas
                 this.showComparisons(total);
                 
-                // Verificar logros
-                this.checkAchievements();
-                
+                         
                 // Mostrar resultados
                 this.$.results.style.display = 'block';
                 window.scrollTo({
@@ -1648,76 +1645,6 @@
                     </div>
                 </div>
             `;
-        }
-
-        // Verificar logros obtenidos
-        checkAchievements() {
-            const achievements = [];
-            
-            // Ejemplo de logros
-            if (document.getElementById('whatsapp_groups').value === 'none') {
-                achievements.push({
-                    title: 'Limpieza Digital',
-                    icon: '📱',
-                    description: 'Por mantener tus chats libres de grupos inactivos'
-                });
-            }
-            
-            if (document.getElementById('clothing_repair').value === 'repair' || 
-                document.getElementById('clothing_repair').value === 'reuse') {
-                achievements.push({
-                    title: 'Moda Sostenible',
-                    icon: '👕',
-                    description: 'Por reparar o reutilizar tu ropa en lugar de tirarla'
-                });
-            }
-            
-            if (document.getElementById('school_transport').value === 'walk') {
-                achievements.push({
-                    title: 'Transporte Verde',
-                    icon: '🚶‍♂️',
-                    description: 'Por ir a la escuela caminando o en bicicleta'
-                });
-            }
-            
-            if (document.getElementById('family_habits').value !== 'none') {
-                achievements.push({
-                    title: 'Agente de Cambio',
-                    icon: '✨',
-                    description: 'Por promover hábitos ecológicos en tu familia'
-                });
-            }
-            
-            if (document.getElementById('eco_challenge').value !== 'none') {
-                achievements.push({
-                    title: 'EcoRetador',
-                    icon: '🏆',
-                    description: 'Por aceptar un reto ecológico esta semana'
-                });
-            }
-            
-            if (achievements.length > 0) {
-                this.showAchievements(achievements);
-            }
-        }
-
-        showAchievements(achievements) {
-            this.$.achievements.innerHTML = `
-                <h3>🏆 Logros Obtenidos</h3>
-                <div class="achievements-grid">
-                    ${achievements.map(ach => `
-                        <div class="achievement">
-                            <div class="achievement-icon">${ach.icon}</div>
-                            <div class="achievement-text">
-                                <strong>${ach.title}</strong>
-                                <p>${ach.description}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            this.$.achievements.style.display = 'block';
         }
 
         // Compartir resultados
