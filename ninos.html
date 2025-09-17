@@ -353,26 +353,26 @@
                 </div>
                 
                 <!-- Pregunta 6: Naturaleza -->
-                <div class="form-group">
-                    <label>6. Cuando visitás un parque, ¿cómo cuidás las plantas?</label>
-                    <div class="options-container">
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'respetar')">
-                            <span style="font-size: 1.2em;">🌸</span><br>
-                            <strong>No las arranco</strong>
-                        </button>
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'regar')">
-                            <span style="font-size: 1.2em;">💧</span><br>
-                            <strong>Las riego</strong>
-                        </button>
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'nada')">
-                            <span style="font-size: 1.2em;">🤷</span><br>
-                            <strong>No me fijo</strong>
-                        </button>
-                    </div>
-                    <div id="tip-naturaleza" class="question-tip">
-                        ¡En San Luis hay 50 especies de aves que necesitan árboles! 🐦
-                    </div>
-                </div>
+               <div class="form-group">
+    <label>6. Cuando visitás un parque, ¿cómo cuidás las plantas?</label>
+    <div class="options-container">
+        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'respetar')">
+            <span style="font-size: 1.2em;">🌸</span><br>
+            <strong>No las arranco</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'regar')">
+            <span style="font-size: 1.2em;">💧</span><br>
+            <strong>Las riego</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'nada')">
+            <span style="font-size: 1.2em;">🤷</span><br>
+            <strong>No me fijo</strong>
+        </button>
+    </div>
+    <div id="tip-naturaleza" class="question-tip">
+        ¡En San Luis hay 50 especies de aves que necesitan árboles! 🐦
+    </div>
+</div>
             </fieldset>
             
             <!-- Pregunta 7: Juegos -->
@@ -399,27 +399,31 @@
                     </div>
                 </div>
                 
-                <!-- Pregunta 8: Mascotas -->
-                <div class="form-group">
-                    <label>8. Si tenés mascota, ¿qué hacés con sus desperdicios?</label>
-                    <div class="options-container">
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'mascotas', 'basura')">
-                            <span style="font-size: 1.2em;">🚮</span><br>
-                            <strong>La tiro al tacho</strong>
-                        </button>
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'mascotas', 'enterrar')">
-                            <span style="font-size: 1.2em;">🌱</span><br>
-                            <strong>La entierro</strong>
-                        </button>
-                        <button type="button" class="option-btn" onclick="selectOption(this, 'mascotas', 'calle')">
-                            <span style="font-size: 1.2em;">🐕</span><br>
-                            <strong>La dejo en la calle</strong>
-                        </button>
-                    </div>
-                    <div id="tip-mascotas" class="question-tip">
-                        El estiércol de conejo es el mejor abono para huertas 🐰 → 🌱
-                    </div>
-                </div>
+                <!-- Pregunta 8: Restos de frutas/verduras -->
+<div class="form-group">
+    <label>8. ¿Qué hacés con los restos de frutas o verduras?</label>
+    <div class="options-container">
+        <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'comer_todo')">
+            <span style="font-size: 1.2em;">🥗</span><br>
+            <strong>Los como todo (no dejo restos)</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'compost')">
+            <span style="font-size: 1.2em;">♻️</span><br>
+            <strong>Los uso para compost (abono para plantas)</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'tirar_basura')">
+            <span style="font-size: 1.2em;">🗑️</span><br>
+            <strong>Los tiro a la basura</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'dar_plantas_mascotas')">
+            <span style="font-size: 1.2em;">🌱</span><br>
+            <strong>Se lo doy a mis plantas o mascotas</strong>
+        </button>
+    </div>
+    <div id="tip-restos_comida" class="question-tip">
+        ¡Los restos de banana y cáscara de huevo son oro para las plantas!
+    </div>
+</div>
             </fieldset>
             
             <button type="button" id="calculateBtn" onclick="calculateResults()">VER MI IMPACTO</button>
@@ -496,21 +500,23 @@
                 guardar: "¡Inteligente! Guardar comida es como tener un tesoro escondido en la heladera.",
                 tirar: "La próxima vez podés pedir menos comida. ¡En los comedores escolares de San Luis enseñan a servir porciones justas!"
             },
-            naturaleza: {
-                respetar: "¡Eres un amigo de los árboles! ¿Sabías que en San Luis plantaron 1000 árboles nativos el año pasado?",
-                regar: "¡Cuidadoso! El agua que usaste hoy ayudó a un pajarito a tener sombra.",
-                nada: "La próxima visita al parque podés mirar los árboles. ¡En San Luis hay algarrobos de más de 100 años!"
-            },
+            restos_comida: {
+    comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta.",
+    compost: "¡Perfecto! El compost reduce la basura y nutre la tierra.",
+    tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento?",
+    dar_plantas_mascotas: "¡Muy bien! Aprovechás los nutrientes de forma natural."
+},
             juegos: {
                 afuera: "¡Saludable! El aire libre de San Luis es de los más limpios de Argentina. ¡Disfrutalo!",
                 mesa: "¿Hacés manualidades con materiales reciclados? En la Biblioteca XX de tu ciudad tienen talleres gratis.",
                 pantallas: "¿Probás <strong>Pixel Planeta</strong>? Es un juego creado por Kodyan HQ para aprender ecología."
             },
-            mascotas: {
-                basura: "¡Correcto! Así evitamos enfermedades. ¿Sabías que en el Parque XX hay zonas especiales para mascotas?",
-                enterrar: "¡Transformás desechos en abono! En San Luis enseñan a hacer compost en casa.",
-                calle: "¿Sabías que 1 gramo de caca contamina 10L de agua? Podés usar bolsitas biodegradables."
-            }
+            plantas_casa: {
+    muchas: "¡Qué maravilla! Tu hogar es un pulmón verde 🌿",
+    algunas: "¡Cada plantita cuenta! Podés ir agregando más poco a poco.",
+    ninguna: "¿Probás empezar con una plantita fácil como un potus?",
+    gustaria_tener: "¡Es un lindo proyecto! Empezá con plantas resistentes."
+}
         };
         
         // Cargar localidades cuando seleccionan departamento
