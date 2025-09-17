@@ -446,24 +446,24 @@
                 </ul>
             </div>
     <script>
-        // Mapeo de departamentos a localidades
-        const localidadesPorDepto = {
-            ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
-            belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
-            chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
-            coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
-            general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Villa Reynolds", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
-            gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
-            junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
-            libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
-            pueyrredon: ["San Luis (ciudad capital)", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
-        };
+      // Mapeo de departamentos a localidades
+const localidadesPorDepto = {
+    ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
+    belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
+    chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
+    coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
+    general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Villa Reynolds", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
+    gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
+    junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
+    libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
+    pueyrredon: ["San Luis (ciudad capital)", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
+};
 
-        // Respuestas del usuario
-        const userResponses = {};
-        
-        // Tips personalizados por respuesta
-        const ttipsPersonalizados = {
+// Respuestas del usuario
+const userResponses = {};
+
+// Tips personalizados por respuesta
+const tipsPersonalizados = {
     luces: {
         apagar: "¡Seguí así! Apagar las luces ayuda mucho. ¿Sabías que en San Luis hay talleres de eficiencia energética para niños?",
         aveces: "Podés poner un dibujo recordatorio en la puerta de tu habitación. ¡En muchas escuelas de la provincia lo hicieron y funciona!",
@@ -491,8 +491,7 @@
     restos_comida: {
         comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta y tu salud.",
         compost: "¡Perfecto! El compost reduce la basura y nutre la tierra. ¡San Luis promueve el compostaje!",
-        tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento? Es más fácil de lo que parece.",
-        dar_plantas_mascotas: "¡Muy bien! Aprovechás los nutrientes de forma natural y nutritiva."
+        tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento? Es más fácil de lo que parece."
     },
     plantas_casa: {
         muchas: "¡Qué maravilla! Tu hogar es un pequeño pulmón verde que purifica el aire 🌿",
@@ -506,142 +505,161 @@
         pantallas: "¿Sabías que hay aplicaciones educativas que te enseñan sobre ecología? ¡Podés aprender jugando!"
     }
 };
-        
-        // Cargar localidades cuando seleccionan departamento
-        document.getElementById('departamento').addEventListener('change', function() {
-            const depto = this.value;
-            const localidadSelect = document.getElementById('localidad');
-            
-            localidadSelect.innerHTML = '<option value="">Seleccionar localidad...</option>';
-            localidadSelect.disabled = !depto;
-            
-            if (depto) {
-                localidadesPorDepto[depto].forEach(localidad => {
-                    const option = document.createElement('option');
-                    option.value = localidad.toLowerCase().replace(/ /g, '_');
-                    option.textContent = localidad;
-                    localidadSelect.appendChild(option);
-                });
-            }
+
+// Cargar localidades cuando seleccionan departamento
+document.getElementById('departamento').addEventListener('change', function() {
+    const depto = this.value;
+    const localidadSelect = document.getElementById('localidad');
+    
+    localidadSelect.innerHTML = '<option value="">Seleccionar localidad...</option>';
+    localidadSelect.disabled = !depto;
+    
+    if (depto) {
+        localidadesPorDepto[depto].forEach(localidad => {
+            const option = document.createElement('option');
+            option.value = localidad.toLowerCase().replace(/ /g, '_');
+            option.textContent = localidad;
+            localidadSelect.appendChild(option);
         });
-
-        // Seleccionar opción en preguntas
-        function selectOption(btn, category, value) {
-            // Resetear estilos de opciones hermanas
-            const siblings = btn.parentNode.querySelectorAll('.option-btn');
-            siblings.forEach(sib => {
-                sib.classList.remove('selected');
-            });
-            
-            // Marcar como seleccionada
-            btn.classList.add('selected');
-            
-            // Guardar respuesta
-            userResponses[category] = value;
-            
-            // Actualizar tip personalizado
-            updateTip(category, value);
-        }
-        
-        // Actualizar tips según respuesta
-        function updateTip(category, value) {
-            const tipElement = document.getElementById(`tip-${category}`);
-            if (tipElement && tipsPersonalizados[category] && tipsPersonalizados[category][value]) {
-                tipElement.innerHTML = tipsPersonalizados[category][value];
-            }
-        }
-
-        // Calcular resultados con feedback personalizado
-        function calculateResults() {
-            const resultList = document.getElementById('result-list');
-            const personalTips = document.getElementById('personal-tips');
-            
-            // Limpiar resultados anteriores
-            resultList.innerHTML = '';
-            personalTips.innerHTML = '';
-            
-            // Generar contribuciones basadas en respuestas
-            const contributions = [];
-            const tips = [];
-            
-            // Evaluar cada respuesta
-            for (const [category, value] of Object.entries(userResponses)) {
-                switch (category) {
-                    case 'luces':
-                        if (value === 'apagar') {
-                            contributions.push("🌞 10 horas de sol aprovechadas");
-                            tips.push("<li>¡Seguí apagando luces! Podés hacer un cartel para tu habitación con materiales reciclados.</li>");
-                        } else {
-                            contributions.push("💡 5 bombillas apagadas potenciales");
-                            tips.push("<li>Probá apagar 1 luz hoy. ¡Es fácil! Ponele un sticker de recordatorio.</li>");
-                        }
-                        break;
-                        
-                    case 'pantallas':
-                        if (value === 'afuera') {
-                            contributions.push("🏀 1 hora de juego saludable");
-                            tips.push("<li>Visitá el parque más cercano a tu casa. ¡En San Luis hay 20 para elegir!</li>");
-                        } else {
-                            contributions.push("🔌 3 dispositivos potencialmente apagados");
-                            tips.push("<li>¿Sabías que el programa 'San Luis Digital' enseña a usar tecnología de forma eco-friendly?</li>");
-                        }
-                        break;
-                        
-                    case 'agua':
-                        contributions.push("💧 20 litros de agua guardados");
-                        tips.push("<li>¿Probás cerrar la canilla cuando te lavás las manos? ¡Ahorrás 5 litros cada vez!</li>");
-                        break;
-                        
-                   case 'residuos':
-    if (value !== 'basura') {
-        contributions.push("♻️ 5 materiales reciclados");
-        tips.push("<li>¡Excelente! Separar los residuos es un superpoder ecológico. Preguntá en tu escuela o municipio dónde llevar materiales reciclables.</li>");
-    } else {
-        tips.push("<li>¿Probás empezar separando solo las botellas? Es fácil y hace una gran diferencia. ¡Podés decorar un tacho especial!</li>");
     }
-    break;
-                        
-                    case 'naturaleza':
-                        contributions.push("🌳 1 árbol protegido");
-                        tips.push("<li>¿Querés plantar un árbol? El vivero provincial de San Luis regala plantines a escuelas.</li>");
-                        break;
-                        
-                    case 'juegos':
-                        if (value === 'pantallas') {
-                            tips.push("<li>¡Descargá <strong>Pixel Planeta</strong>! Juego oficial de Kodyan HQ para aprender ecología.</li>");
-                        }
-                        break;
+});
+
+// Seleccionar opción en preguntas
+function selectOption(btn, category, value) {
+    // Resetear estilos de opciones hermanas
+    const siblings = btn.parentNode.querySelectorAll('.option-btn');
+    siblings.forEach(sib => {
+        sib.classList.remove('selected');
+    });
+    
+    // Marcar como seleccionada
+    btn.classList.add('selected');
+    
+    // Guardar respuesta
+    userResponses[category] = value;
+    
+    // Actualizar tip personalizado
+    updateTip(category, value);
+}
+
+// Actualizar tips según respuesta
+function updateTip(category, value) {
+    const tipElement = document.getElementById(`tip-${category}`);
+    if (tipElement && tipsPersonalizados[category] && tipsPersonalizados[category][value]) {
+        tipElement.innerHTML = tipsPersonalizados[category][value];
+    }
+}
+
+// Calcular resultados con feedback personalizado
+function calculateResults() {
+    const resultList = document.getElementById('result-list');
+    const personalTips = document.getElementById('personal-tips');
+    
+    // Limpiar resultados anteriores
+    resultList.innerHTML = '';
+    personalTips.innerHTML = '';
+    
+    // Generar contribuciones basadas en respuestas
+    const contributions = [];
+    const tips = [];
+    
+    // Evaluar cada respuesta
+    for (const [category, value] of Object.entries(userResponses)) {
+        switch (category) {
+            case 'luces':
+                if (value === 'apagar') {
+                    contributions.push("🌞 10 horas de sol aprovechadas");
+                    tips.push("<li>¡Seguí apagando luces! Podés hacer un cartel para tu habitación con materiales reciclados.</li>");
+                } else {
+                    contributions.push("💡 5 bombillas apagadas potenciales");
+                    tips.push("<li>Probá apagar 1 luz hoy. ¡Es fácil! Ponele un sticker de recordatorio.</li>");
                 }
-            }
-            
-            // Mensaje base si no hay suficientes respuestas
-            if (contributions.length === 0) {
-                contributions.push("🌱 Pequeñas acciones hacen grandes cambios");
-                tips.push("<li>Empeza hoy con algo simple: apagá una luz que no uses.</li>");
-            }
-            
-            // Agregar tips generales
-            tips.push("<li>🌱 <strong>¡Hacé tu huerta!</strong> El programa <a href='https://sanluis.gov.ar/desarrollo-productivo/activa-huerta/' target='_blank'>Mi Huerta San Luis</a> te enseña cómo.</li>");
-            tips.push("<li>🚲 <strong>Visitá los parques:</strong> En San Luis hay más de 20 espacios verdes para explorar.</li>");
-            
-            // Mostrar resultados
-            contributions.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = item;
-                li.style.margin = '10px 0';
-                li.style.fontSize = '1.1em';
-                resultList.appendChild(li);
-            });
-            
-            personalTips.innerHTML = tips.join('');
-            
-            // Mostrar sección de resultados
-            document.getElementById('results').classList.remove('hidden');
-            window.scrollTo({
-                top: document.getElementById('results').offsetTop,
-                behavior: 'smooth'
-            });
+                break;
+                
+            case 'pantallas':
+                if (value === 'afuera') {
+                    contributions.push("🏀 1 hora de juego saludable");
+                    tips.push("<li>Visitá el parque más cercano a tu casa. ¡En San Luis hay 20 para elegir!</li>");
+                } else {
+                    contributions.push("🔌 3 dispositivos potencialmente apagados");
+                    tips.push("<li>¿Sabías que el programa 'San Luis Digital' enseña a usar tecnología de forma eco-friendly?</li>");
+                }
+                break;
+                
+            case 'agua':
+                contributions.push("💧 20 litros de agua guardados");
+                tips.push("<li>¿Probás cerrar la canilla cuando te lavás las manos? ¡Ahorrás 5 litros cada vez!</li>");
+                break;
+                
+            case 'residuos':
+                if (value !== 'basura') {
+                    contributions.push("♻️ 5 materiales reciclados");
+                    tips.push("<li>¡Excelente! Separar los residuos es un superpoder ecológico. Preguntá en tu escuela o municipio dónde llevar materiales reciclables.</li>");
+                } else {
+                    tips.push("<li>¿Probás empezar separando solo las botellas? Es fácil y hace una gran diferencia. ¡Podés decorar un tacho especial!</li>");
+                }
+                break;
+                
+            case 'restos_comida':
+                if (value === 'compost') {
+                    contributions.push("🌱 3 kilos de compost creados");
+                    tips.push("<li>¡Excelente! El compostaje ayuda a reducir la basura y nutrir la tierra.</li>");
+                } else if (value === 'comer_todo') {
+                    contributions.push("🍎 5 frutas aprovechadas al máximo");
+                    tips.push("<li>¡Perfecto! Aprovechar toda la comida es genial para el planeta.</li>");
+                } else {
+                    tips.push("<li>¿Sabías que los restos de comida pueden convertirse en abono? ¡Es más fácil de lo que parece!</li>");
+                }
+                break;
+                
+            case 'plantas_casa':
+                if (value === 'muchas' || value === 'algunas') {
+                    contributions.push("🌿 10 plantas purificando aire");
+                    tips.push("<li>¡Tus plantas están haciendo el aire más limpio! ¿Sabías que también ayudan a regular la temperatura?</li>");
+                } else if (value === 'gustaria_tener') {
+                    contributions.push("💚 Futuro jardinero en acción");
+                    tips.push("<li>¡Empezá con plantas resistentes como potus o suculentas! Son fáciles de cuidar.</li>");
+                } else {
+                    tips.push("<li>¿Probás empezar con una plantita? ¡Purifican el aire y alegran cualquier espacio!</li>");
+                }
+                break;
+                
+            case 'juegos':
+                if (value === 'pantallas') {
+                    tips.push("<li>¿Sabías que hay aplicaciones educativas que te enseñan sobre ecología? ¡Podés aprender jugando!</li>");
+                }
+                break;
         }
+    }
+    
+    // Mensaje base si no hay suficientes respuestas
+    if (contributions.length === 0) {
+        contributions.push("🌱 Pequeñas acciones hacen grandes cambios");
+        tips.push("<li>Empeza hoy con algo simple: apagá una luz que no uses.</li>");
+    }
+    
+    // Agregar tips generales
+    tips.push("<li>🌱 <strong>¡Hacé tu huerta!</strong> El programa <a href='https://sanluis.gov.ar/desarrollo-productivo/activa-huerta/' target='_blank'>Mi Huerta San Luis</a> te enseña cómo.</li>");
+    tips.push("<li>🚲 <strong>Visitá los parques:</strong> En San Luis hay más de 20 espacios verdes para explorar.</li>");
+    
+    // Mostrar resultados
+    contributions.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = item;
+        li.style.margin = '10px 0';
+        li.style.fontSize = '1.1em';
+        resultList.appendChild(li);
+    });
+    
+    personalTips.innerHTML = tips.join('');
+    
+    // Mostrar sección de resultados
+    document.getElementById('results').classList.remove('hidden');
+    window.scrollTo({
+        top: document.getElementById('results').offsetTop,
+        behavior: 'smooth'
+    });
+}
     </script>
 </body>
 </html>
