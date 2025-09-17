@@ -336,7 +336,7 @@
                     <div class="options-container">
                         <button type="button" class="option-btn" onclick="selectOption(this, 'comida', 'compartir')">
                             <span style="font-size: 1.2em;">🐶</span><br>
-                            <strong>Se lo doy a mi mascota/hermano</strong>
+                            <strong>Se lo doy a mi mascota</strong>
                         </button>
                         <button type="button" class="option-btn" onclick="selectOption(this, 'comida', 'guardar')">
                             <span style="font-size: 1.2em;">🧊</span><br>
@@ -352,26 +352,30 @@
                     </div>
                 </div>
                 
-                <!-- Pregunta 6: Naturaleza -->
-               <div class="form-group">
-    <label>6. Cuando visitás un parque, ¿cómo cuidás las plantas?</label>
+              <div class="form-group">
+    <label>6. ¿Tenés plantas en tu casa?</label>
     <div class="options-container">
-        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'respetar')">
-            <span style="font-size: 1.2em;">🌸</span><br>
-            <strong>No las arranco</strong>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'plantas_casa', 'muchas')">
+            <span style="font-size: 1.2em;">🌿</span><br>
+            <strong>Sí, muchas</strong>
         </button>
-        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'regar')">
-            <span style="font-size: 1.2em;">💧</span><br>
-            <strong>Las riego</strong>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'plantas_casa', 'algunas')">
+            <span style="font-size: 1.2em;">🌱</span><br>
+            <strong>Algunas</strong>
         </button>
-        <button type="button" class="option-btn" onclick="selectOption(this, 'naturaleza', 'nada')">
-            <span style="font-size: 1.2em;">🤷</span><br>
-            <strong>No me fijo</strong>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'plantas_casa', 'ninguna')">
+            <span style="font-size: 1.2em;">🏠</span><br>
+            <strong>Ninguna</strong>
+        </button>
+        <button type="button" class="option-btn" onclick="selectOption(this, 'plantas_casa', 'gustaria_tener')">
+            <span style="font-size: 1.2em;">💚</span><br>
+            <strong>Me gustaría tener</strong>
         </button>
     </div>
-    <div id="tip-naturaleza" class="question-tip">
-        ¡En San Luis hay 50 especies de aves que necesitan árboles! 🐦
+    <div id="tip-plantas_casa" class="question-tip">
+        ¡Las plantas purifican el aire y alegran tu hogar! 🌿✨
     </div>
+</div>
 </div>
             </fieldset>
             
@@ -414,10 +418,6 @@
         <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'tirar_basura')">
             <span style="font-size: 1.2em;">🗑️</span><br>
             <strong>Los tiro a la basura</strong>
-        </button>
-        <button type="button" class="option-btn" onclick="selectOption(this, 'restos_comida', 'dar_plantas_mascotas')">
-            <span style="font-size: 1.2em;">🌱</span><br>
-            <strong>Se lo doy a mis plantas o mascotas</strong>
         </button>
     </div>
     <div id="tip-restos_comida" class="question-tip">
@@ -504,7 +504,6 @@
     comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta.",
     compost: "¡Perfecto! El compost reduce la basura y nutre la tierra.",
     tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento?",
-    dar_plantas_mascotas: "¡Muy bien! Aprovechás los nutrientes de forma natural."
 },
             juegos: {
                 afuera: "¡Saludable! El aire libre de San Luis es de los más limpios de Argentina. ¡Disfrutalo!",
