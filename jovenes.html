@@ -1222,15 +1222,15 @@
         // Configurar localidades por departamento
         setupLocalidades() {
             const localidadesPorDepto = {
-                ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo"],
-                belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial"],
-                chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo"],
-                coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande"],
-                general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado"],
-                gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona"],
-                junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca"],
-                libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles"],
-                pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero"]
+                ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
+                belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
+                chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
+                coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
+                general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
+                gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
+                junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
+                libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
+                pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
             };
 
             this.$.departamento.addEventListener('change', () => {
@@ -1601,7 +1601,7 @@
             let message, icon, color, tip;
             
             if (total < 3) {
-                message = "¡Eres un EcoHéroe!";
+                message = "¡Muy bien hecho!";
                 icon = "fa-check-circle";
                 color = "#4CAF50";
                 tip = "Tu huella es mucho menor que el promedio. ¡Sos un ejemplo para otros jóvenes!";
