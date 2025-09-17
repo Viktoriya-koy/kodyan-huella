@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-       :root {
+        :root {
             /* Colores base */
             --primary-color: #1d5f5a;
             --secondary-color: #38b2ac;
@@ -927,16 +927,16 @@
                     </div>
                     
                     <div class="form-group">
-    <label for="food_choices">Tus hábitos alimenticios son más...</label>
-    <select id="food_choices" aria-labelledby="section3 food_choices">
-        <option value="conscious">Conscientes y saludables</option>
-        <option value="homemade">Caseros y tradicionales</option>
-        <option value="practical">Prácticos y rápidos</option>
-        <option value="processed">Basados en snacks y paquetes</option>
-        <option value="varied">Varían según la semana</option>
-        <option value="influenced">Lo que haya en casa, no me fijo en eso</option>
-    </select>
-</div>
+                        <label for="food_choices">Tus hábitos alimenticios son más...</label>
+                        <select id="food_choices" aria-labelledby="section3 food_choices">
+                            <option value="conscious">Conscientes y saludables</option>
+                            <option value="homemade">Caseros y tradicionales</option>
+                            <option value="practical">Prácticos y rápidos</option>
+                            <option value="processed">Basados en snacks y paquetes</option>
+                            <option value="varied">Varían según la semana</option>
+                            <option value="influenced">Lo que haya en casa, no me fijo en eso</option>
+                        </select>
+                    </div>
                     
                     <div class="form-group">
                         <label for="plastic_bags">¿Usás bolsas de plástico cuando comprás algo?</label>
@@ -1008,17 +1008,18 @@
                         </select>
                     </div>
                     
-                   <div class="form-group">
-    <label for="weekend_movement">¿Cómo te mantenés activo/a los fines de semana?</label>
-    <select id="weekend_movement" aria-labelledby="section5 weekend_movement">
-        <option value="sports_team">Juego en equipos o ligas deportivas</option>
-        <option value="friends_active">Salgo con amigos a hacer actividad física</option>
-        <option value="family_active">Hago actividades con mi familia</option>
-        <option value="alone_active">Hago ejercicio por mi cuenta</option>
-        <option value="digital_active">Uso apps o videos para ejercitarme</option>
-        <option value="little_active">Me muevo poco, soy más tranquilo/a</option>
-    </select>
-</div>
+                    <div class="form-group">
+                        <label for="weekend_movement">¿Cómo te mantenés activo/a los fines de semana?</label>
+                        <select id="weekend_movement" aria-labelledby="section5 weekend_movement">
+                            <option value="sports_team">Juego en equipos o ligas deportivas</option>
+                            <option value="friends_active">Salgo con amigos a hacer actividad física</option>
+                            <option value="family_active">Hago actividades con mi familia</option>
+                            <option value="alone_active">Hago ejercicio por mi cuenta</option>
+                            <option value="digital_active">Uso apps o videos para ejercitarme</option>
+                            <option value="little_active">Me muevo poco, soy más tranquilo/a</option>
+                        </select>
+                    </div>
+                </section>
                 
                 <!-- Sección 6: Retos & Acciones -->
                 <section>
@@ -1102,7 +1103,7 @@
                     <h4>🌿 Iniciativas sustentables para jóvenes en San Luis</h4>
                     <ul class="tips-list">
                         <li>📱 <strong>Limpieza digital:</strong> Borrar chats inactivos y fotos que no usás puede reducir tu huella digital. ¡Además libera espacio en tu celu!</li>
-                        <li>🎧 <strong>Streaming consciente:</strong> Cerrá Instragram y TikTok cuando no los uses. 1 hora en pausa gasta energía como cargar 3 celulares.</li>
+                        <li>🎧 <strong>Streaming consciente:</strong> Cerrá Instagram y TikTok cuando no los uses. 1 hora en pausa gasta energía como cargar 3 celulares.</li>
                         <li>👗 <strong>Moda sostenible:</strong> En San Luis hay ferias de trueque. Llevá ropa que ya no uses y encontrá algo nuevo (para vos).</li>
                         <li>🚲 <strong>Movete verde:</strong> Si podés, andá a la escuela en bici o caminando. Es saludable y no contamina.</li>
                         <li>💡 <strong>Apagá lo que no uses:</strong> Luces, dispositivos en standby, cargadores conectados... pequeños cambios hacen gran diferencia.</li>
@@ -1141,640 +1142,644 @@
     </div>
 
     <script>
-        // Clase para manejar la calculadora
-        class CarbonFootprintCalculator {
-            constructor() {
-                this.cacheDOM();
-                this.initEvents();
-                this.setupLocalidades();
-                this.factors = this.getCalculationFactors();
-            }
+    // Clase para manejar la calculadora
+    class CarbonFootprintCalculator {
+        constructor() {
+            this.cacheDOM();
+            this.initEvents();
+            this.setupLocalidades();
+            this.factors = this.getCalculationFactors();
+        }
 
-            // Cachear elementos del DOM
-            cacheDOM() {
-                this.$ = {
-                    form: document.getElementById('carbonForm'),
-                    results: document.getElementById('results'),
-                    calculateBtn: document.getElementById('calculateBtn'),
-                    departamento: document.getElementById('departamento'),
-                    localidad: document.getElementById('localidad'),
-                    householdSize: document.getElementById('household_size'),
-                    totalResult: document.getElementById('totalResult'),
-                    techValue: document.getElementById('techValue'),
-                    consumptionValue: document.getElementById('consumptionValue'),
-                    homeValue: document.getElementById('homeValue'),
-                    transportValue: document.getElementById('transportValue'),
-                    techProgress: document.getElementById('techProgress'),
-                    consumptionProgress: document.getElementById('consumptionProgress'),
-                    homeProgress: document.getElementById('homeProgress'),
-                    transportProgress: document.getElementById('transportProgress'),
-                    comparisons: document.getElementById('comparisons'),
-                    achievements: document.getElementById('achievements'),
-                    shareWhatsApp: document.getElementById('shareWhatsApp'),
-                    shareInstagram: document.getElementById('shareInstagram'),
-                    shareTwitter: document.getElementById('shareTwitter'),
-                    shareTelegram: document.getElementById('shareTelegram'),
-                    copyResults: document.getElementById('copyResults'),
-                    copyNotification: document.getElementById('copyNotification'),
-                    formProgress: document.getElementById('formProgress'),
-                    progressText: document.getElementById('progressText'),
-                    progressSteps: document.querySelectorAll('.progress-step')
-                };
+        // Cachear elementos del DOM
+        cacheDOM() {
+            this.$ = {
+                form: document.getElementById('carbonForm'),
+                results: document.getElementById('results'),
+                calculateBtn: document.getElementById('calculateBtn'),
+                departamento: document.getElementById('departamento'),
+                localidad: document.getElementById('localidad'),
+                householdSize: document.getElementById('household_size'),
+                totalResult: document.getElementById('totalResult'),
+                techValue: document.getElementById('techValue'),
+                consumptionValue: document.getElementById('consumptionValue'),
+                homeValue: document.getElementById('homeValue'),
+                transportValue: document.getElementById('transportValue'),
+                techProgress: document.getElementById('techProgress'),
+                consumptionProgress: document.getElementById('consumptionProgress'),
+                homeProgress: document.getElementById('homeProgress'),
+                transportProgress: document.getElementById('transportProgress'),
+                comparisons: document.getElementById('comparisons'),
+                achievements: document.getElementById('achievements'),
+                shareWhatsApp: document.getElementById('shareWhatsApp'),
+                shareInstagram: document.getElementById('shareInstagram'),
+                shareTwitter: document.getElementById('shareTwitter'),
+                shareTelegram: document.getElementById('shareTelegram'),
+                copyResults: document.getElementById('copyResults'),
+                copyNotification: document.getElementById('copyNotification'),
+                formProgress: document.getElementById('formProgress'),
+                progressText: document.getElementById('progressText'),
+                progressSteps: document.querySelectorAll('.progress-step')
+            };
 
-                // Cachear todos los campos requeridos
-                this.$.requiredFields = this.$.form.querySelectorAll('[required]');
-            }
+            // Cachear todos los campos requeridos
+            this.$.requiredFields = this.$.form.querySelectorAll('[required]');
+        }
 
-            // Inicializar eventos
-            initEvents() {
-                // Evento para calcular
-                this.$.calculateBtn.addEventListener('click', () => this.calculateFootprint());
+        // Inicializar eventos
+        initEvents() {
+            // Evento para calcular
+            this.$.calculateBtn.addEventListener('click', () => this.calculateFootprint());
 
-                // Eventos para compartir
-                this.$.shareWhatsApp.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.shareResult('whatsapp');
-                });
+            // Eventos para compartir
+            this.$.shareWhatsApp.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.shareResult('whatsapp');
+            });
 
-                this.$.shareInstagram.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.shareResult('instagram');
-                });
+            this.$.shareInstagram.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.shareResult('instagram');
+            });
 
-                this.$.shareTwitter.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.shareResult('twitter');
-                });
+            this.$.shareTwitter.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.shareResult('twitter');
+            });
 
-                this.$.shareTelegram.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.shareResult('telegram');
-                });
+            this.$.shareTelegram.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.shareResult('telegram');
+            });
 
-                this.$.copyResults.addEventListener('click', () => this.copyResultsToClipboard());
+            this.$.copyResults.addEventListener('click', () => this.copyResultsToClipboard());
 
-                // Eventos para actualizar barra de progreso
-                window.addEventListener('scroll', () => this.updateProgress());
-                window.addEventListener('load', () => this.updateProgress());
-            }
+            // Eventos para actualizar barra de progreso
+            window.addEventListener('scroll', () => this.updateProgress());
+            window.addEventListener('load', () => this.updateProgress());
+        }
 
-            // Configurar localidades por departamento
-            setupLocalidades() {
-                const localidadesPorDepto = {
-                    ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo"],
-                    belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial"],
-                    chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo"],
-                    coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande"],
-                    general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado"],
-                    gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona"],
-                    junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca"],
-                    libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles"],
-                    pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero"]
-                };
+        // Configurar localidades por departamento
+        setupLocalidades() {
+            const localidadesPorDepto = {
+                ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo"],
+                belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial"],
+                chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo"],
+                coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande"],
+                general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado"],
+                gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona"],
+                junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca"],
+                libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles"],
+                pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero"]
+            };
 
-                this.$.departamento.addEventListener('change', () => {
-                    const depto = this.$.departamento.value;
-                    this.$.localidad.innerHTML = '<option value="">Seleccionar localidad...</option>';
-                    
-                    if (depto) {
-                        this.$.localidad.disabled = false;
-                        localidadesPorDepto[depto].forEach(localidad => {
-                            const option = document.createElement('option');
-                            option.value = localidad.toLowerCase().replace(/ /g, '_');
-                            option.textContent = localidad;
-                            this.$.localidad.appendChild(option);
-                        });
-                    } else {
-                        this.$.localidad.disabled = true;
-                    }
-                });
-            }
-
-            // Factores de cálculo (versión simplificada para jóvenes)
-            getCalculationFactors() {
-                return {
-                    technology: {
-                        whatsappGroups: {
-                            'many': 80,
-                            'some': 40,
-                            'few': 20,
-                            'none': 0
-                        },
-                        backgroundStreaming: {
-                            'always': 100,
-                            'sometimes': 50,
-                            'rarely': 20,
-                            'never': 0
-                        },
-                        memesStorage: {
-                            'many': 60,
-                            'some': 30,
-                            'few': 10,
-                            'none': 0
-                        },
-                        deviceUsage: {
-                            'high': 120,
-                            'medium': 80,
-                            'low': 40,
-                            'very_low': 10
-                        }
-                    },
-                    consumption: {
-                        clothingRepair: {
-                            'throw': 80,
-                            'give': 20,
-                            'repair': 0,
-                            'reuse': -20
-                        },
-                        shoppingFrequency: {
-                            'monthly': 150,
-                            'seasonal': 100,
-                            'yearly': 50,
-                            'rarely': 0
-                        },
-                        plasticBags: {
-                            'always': 60,
-                            'sometimes': 30,
-                            'rarely': 10,
-                            'never': -20
-                        }
-                    },
-                    home: {
-                        familyHabits: {
-                            'none': 50,
-                            'shower': -40,
-                            'food': -30,
-                            'router': -20,
-                            'lights': -15
-                        },
-                        homeWaste: {
-                            'lights': 60,
-                            'water': 80,
-                            'delivery': 70,
-                            'food': 90,
-                            'none': 0
-                        },
-                        leftovers: {
-                            'containers': -30,
-                            'fridge': 20,
-                            'portions': -50,
-                            'freeze': -20
-                        }
-                    },
-                    transport: {
-                        schoolTransport: {
-                            'walk': 0,
-                            'bus': 40,
-                            'car': 100,
-                            'mixed': 60
-                        },
-                        transportDistance: {
-                            'short': 20,
-                            'medium': 50,
-                            'long': 80,
-                            'very_long': 120
-                        },
-                        weekendTransport: {
-                            'walk': 0,
-                            'bus': 30,
-                            'car': 80,
-                            'home': 10
-                        }
-                    },
-                    actions: {
-                        ecoChallenge: {
-                            'socks': -20,
-                            'detox': -30,
-                            'trash': -40,
-                            'none': 0
-                        },
-                        ecoGift: {
-                            'seeds': -30,
-                            'bag': -20,
-                            'bottle': -15,
-                            'tips': 0
-                        },
-                        ecoInterest: {
-                            'yes': -50,
-                            'maybe': -20,
-                            'no': 0
-                        }
-                    }
-                };
-            }
-
-            // Validar campos
-            validateFields() {
-                let isValid = true;
+            this.$.departamento.addEventListener('change', () => {
+                const depto = this.$.departamento.value;
+                this.$.localidad.innerHTML = '<option value="">Seleccionar localidad...</option>';
                 
-                this.$.requiredFields.forEach(field => {
-                    if (!this.validateField(field)) {
-                        if (isValid) {
-                            // Desplazarse al primer campo inválido
-                            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            field.focus();
-                        }
-                        isValid = false;
-                    }
-                });
-                
-                return isValid;
-            }
-
-            // Validar un campo individual
-            validateField(field) {
-                if (field.required) {
-                    if (field.type === 'checkbox' || field.type === 'radio') {
-                        const name = field.name;
-                        const isChecked = document.querySelector(`input[name="${name}"]:checked`);
-                        
-                        if (!isChecked) {
-                            const group = field.closest('.form-group') || field.closest('.grid-container');
-                            if (group) {
-                                group.classList.add('invalid-field');
-                            }
-                            return false;
-                        }
-                    } else if (!field.value) {
-                        field.style.borderColor = 'var(--error-color)';
-                        field.parentNode.classList.add('invalid-field');
-                        return false;
-                    } else if (field.type === 'number' && (field.value <= 0 || isNaN(field.value))) {
-                        field.style.borderColor = 'var(--error-color)';
-                        field.parentNode.classList.add('invalid-field');
-                        return false;
-                    }
-                }
-                
-                field.style.borderColor = '#ddd';
-                field.parentNode?.classList?.remove('invalid-field');
-                return true;
-            }
-
-            // Barra de progreso (mismo sistema que adultos)
-            updateProgress() {
-                const sections = document.querySelectorAll('section');
-                const totalSections = sections.length;
-                
-                // Encontrar qué sección está actualmente en vista
-                let currentSectionIndex = -1;
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                        currentSectionIndex = index;
-                    }
-                });
-                
-                if (currentSectionIndex === -1) {
-                    // Si no se encuentra ninguna sección, usar la primera
-                    currentSectionIndex = 0;
-                }
-                
-                const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
-                this.$.formProgress.style.height = `${progressPercentage}%`;
-                this.$.progressText.textContent = `Paso ${currentSectionIndex + 1}/${totalSections}`;
-                
-                // Actualizar pasos activos
-                this.$.progressSteps.forEach((step, index) => {
-                    if (index < currentSectionIndex + 1) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-            }
-
-            // Calcular huella de carbono
-            calculateFootprint() {
-                try {
-                    if (!this.validateFields()) {
-                        alert('Por favor completa todos los campos obligatorios marcados en rojo');
-                        return;
-                    }
-                    
-                    const householdSize = parseInt(this.$.householdSize.value) || 1;
-                    
-                    // 1. Tecnología
-                    let techFootprint = this.calculateTechFootprint(householdSize);
-                    
-                    // 2. Consumo
-                    let consumptionFootprint = this.calculateConsumptionFootprint();
-                    
-                    // 3. Hogar
-                    let homeFootprint = this.calculateHomeFootprint(householdSize);
-                    
-                    // 4. Transporte
-                    let transportFootprint = this.calculateTransportFootprint();
-                    
-                    // 5. Acciones (reducciones)
-                    let actionsReduction = this.calculateActionsReduction();
-                    
-                    // Total en toneladas (por persona)
-                    const total = (techFootprint + consumptionFootprint + homeFootprint + transportFootprint + actionsReduction) / 1000;
-                    
-                    // Mostrar resultados
-                    this.displayResults(total, techFootprint, consumptionFootprint, homeFootprint, transportFootprint);
-                    
-                    // Mostrar comparativas visuales mejoradas
-                    this.showComparisons(total);
-                    
-                    // Verificar logros
-                    this.checkAchievements();
-                    
-                    // Mostrar resultados
-                    this.$.results.style.display = 'block';
-                    window.scrollTo({
-                        top: this.$.results.offsetTop,
-                        behavior: 'smooth'
+                if (depto) {
+                    this.$.localidad.disabled = false;
+                    localidadesPorDepto[depto].forEach(localidad => {
+                        const option = document.createElement('option');
+                        option.value = localidad.toLowerCase().replace(/ /g, '_');
+                        option.textContent = localidad;
+                        this.$.localidad.appendChild(option);
                     });
-                } catch (error) {
-                    console.error('Error al calcular la huella de carbono:', error);
-                    alert('Ocurrió un error al calcular tu huella de carbono. Por favor intenta nuevamente.');
-                }
-            }
-
-            // Cálculos específicos por categoría
-            calculateTechFootprint(householdSize) {
-                let footprint = 0;
-                
-                footprint += this.factors.technology.whatsappGroups[document.getElementById('whatsapp_groups').value];
-                footprint += this.factors.technology.backgroundStreaming[document.getElementById('background_streaming').value];
-                footprint += this.factors.technology.memesStorage[document.getElementById('memes_storage').value];
-                footprint += this.factors.technology.deviceUsage[document.getElementById('device_usage').value];
-                
-                return footprint / householdSize;
-            }
-
-            calculateConsumptionFootprint() {
-                let footprint = 0;
-                
-                footprint += this.factors.consumption.clothingRepair[document.getElementById('clothing_repair').value];
-                footprint += this.factors.consumption.shoppingFrequency[document.getElementById('shopping_frequency').value];
-                footprint += this.factors.consumption.plasticBags[document.getElementById('plastic_bags').value];
-                
-                return footprint;
-            }
-
-            calculateHomeFootprint(householdSize) {
-                let footprint = 0;
-                
-                footprint += this.factors.home.familyHabits[document.getElementById('family_habits').value];
-                footprint += this.factors.home.homeWaste[document.getElementById('home_waste').value];
-                footprint += this.factors.home.leftovers[document.getElementById('leftovers').value];
-                
-                return footprint / householdSize;
-            }
-
-            calculateTransportFootprint() {
-                let footprint = 0;
-                
-                footprint += this.factors.transport.schoolTransport[document.getElementById('school_transport').value];
-                footprint += this.factors.transport.transportDistance[document.getElementById('transport_distance').value];
-                footprint += this.factors.transport.weekendTransport[document.getElementById('weekend_transport').value];
-                
-                return footprint;
-            }
-
-            calculateActionsReduction() {
-                let reduction = 0;
-                
-                reduction += this.factors.actions.ecoChallenge[document.getElementById('eco_challenge').value];
-                reduction += this.factors.actions.ecoGift[document.getElementById('eco_gift').value];
-                reduction += this.factors.actions.ecoInterest[document.getElementById('eco_interest').value];
-                
-                return reduction;
-            }
-
-            // Mostrar resultados
-            displayResults(total, techFootprint, consumptionFootprint, homeFootprint, transportFootprint) {
-                this.$.totalResult.textContent = total.toFixed(2);
-                
-                this.$.techValue.textContent = (techFootprint / 1000).toFixed(2) + ' ton';
-                this.$.consumptionValue.textContent = (consumptionFootprint / 1000).toFixed(2) + ' ton';
-                this.$.homeValue.textContent = (homeFootprint / 1000).toFixed(2) + ' ton';
-                this.$.transportValue.textContent = (transportFootprint / 1000).toFixed(2) + ' ton';
-                
-                // Actualizar barras de progreso
-                const maxCategory = Math.max(techFootprint, consumptionFootprint, homeFootprint, transportFootprint);
-                
-                this.$.techProgress.value = (techFootprint / maxCategory) * 100;
-                this.$.consumptionProgress.value = (consumptionFootprint / maxCategory) * 100;
-                this.$.homeProgress.value = (homeFootprint / maxCategory) * 100;
-                this.$.transportProgress.value = (transportFootprint / maxCategory) * 100;
-                
-                // Actualizar color según impacto
-                this.updateResultColor(total);
-            }
-
-            // Actualizar color del resultado según impacto
-            updateResultColor(total) {
-                const resultBox = document.querySelector('.result-box');
-                let color;
-                
-                if (total < 3) {
-                    color = '#4CAF50'; // Verde - Muy bueno
-                } else if (total < 5) {
-                    color = '#8BC34A'; // Verde claro - Bueno
-                } else if (total < 7) {
-                    color = '#FFC107'; // Amarillo - Promedio
-                } else if (total < 9) {
-                    color = '#FF9800'; // Naranja - Malo
                 } else {
-                    color = '#F44336'; // Rojo - Muy malo
+                    this.$.localidad.disabled = true;
                 }
-                
-                resultBox.style.background = `linear-gradient(to right, ${color}, ${this.adjustColor(color, -20)})`;
-            }
+            });
+        }
 
-            adjustColor(color, amount) {
-                return '#' + color.replace(/^#/, '').replace(/../g, color => 
-                    ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
-            }
+        // Factores de cálculo (versión simplificada para jóvenes)
+        getCalculationFactors() {
+            return {
+                technology: {
+                    whatsappGroups: {
+                        'many': 80,
+                        'some': 40,
+                        'few': 20,
+                        'none': 0
+                    },
+                    backgroundStreaming: {
+                        'always': 100,
+                        'sometimes': 50,
+                        'rarely': 20,
+                        'never': 0
+                    },
+                    memesStorage: {
+                        'many': 60,
+                        'some': 30,
+                        'few': 10,
+                        'none': 0
+                    },
+                    deviceUsage: {
+                        'high': 120,
+                        'medium': 80,
+                        'low': 40,
+                        'very_low': 10
+                    }
+                },
+                consumption: {
+                    clothingRepair: {
+                        'throw': 80,
+                        'give': 20,
+                        'repair': 0,
+                        'reuse': -20
+                    },
+                    foodChoices: {
+                        'conscious': -30,
+                        'homemade': -20,
+                        'practical': 20,
+                        'processed': 60,
+                        'varied': 10,
+                        'influenced': 30
+                    },
+                    plasticBags: {
+                        'always': 60,
+                        'sometimes': 30,
+                        'rarely': 10,
+                        'never': -20
+                    }
+                },
+                home: {
+                    familyHabits: {
+                        'none': 50,
+                        'shower': -40,
+                        'food': -30,
+                        'router': -20,
+                        'lights': -15
+                    },
+                    homeWaste: {
+                        'lights': 60,
+                        'water': 80,
+                        'delivery': 70,
+                        'food': 90,
+                        'none': 0
+                    },
+                    leftovers: {
+                        'containers': -30,
+                        'fridge': 20,
+                        'portions': -50,
+                        'freeze': -20
+                    }
+                },
+                transport: {
+                    schoolTransport: {
+                        'walk': 0,
+                        'bus': 40,
+                        'car': 100,
+                        'mixed': 60
+                    },
+                    transportDistance: {
+                        'short': 20,
+                        'medium': 50,
+                        'long': 80,
+                        'very_long': 120
+                    },
+                    weekendMovement: {
+                        'sports_team': 10,
+                        'friends_active': 20,
+                        'family_active': 15,
+                        'alone_active': 5,
+                        'digital_active': 25,
+                        'little_active': 40
+                    }
+                },
+                actions: {
+                    ecoChallenge: {
+                        'socks': -20,
+                        'detox': -30,
+                        'trash': -40,
+                        'none': 0
+                    },
+                    ecoGift: {
+                        'seeds': -30,
+                        'bag': -20,
+                        'bottle': -15,
+                        'tips': 0
+                    },
+                    ecoInterest: {
+                        'yes': -50,
+                        'maybe': -20,
+                        'no': 0
+                    }
+                }
+            };
+        }
 
-            // Mostrar comparativas visuales mejoradas
-            showComparisons(total) {
-                let message, icon, color, tip;
-                
-                if (total < 3) {
-                    message = "¡Eres un EcoHéroe!";
-                    icon = "fa-check-circle";
-                    color = "#4CAF50";
-                    tip = "Tu huella es mucho menor que el promedio. ¡Sos un ejemplo para otros jóvenes!";
-                } else if (total < 5) {
-                    message = "Buen trabajo";
-                    icon = "fa-thumbs-up";
-                    color = "#8BC34A";
-                    tip = "Estás por debajo del promedio. Con pequeños cambios podés mejorar aún más.";
-                } else if (total < 7) {
-                    message = "En el promedio";
-                    icon = "fa-info-circle";
-                    color = "#FFC107";
-                    tip = "Estás como la mayoría. Mirá nuestros consejos para reducir tu impacto.";
+        // Validar campos
+        validateFields() {
+            let isValid = true;
+            
+            this.$.requiredFields.forEach(field => {
+                if (!this.validateField(field)) {
+                    if (isValid) {
+                        // Desplazarse al primer campo inválido
+                        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        field.focus();
+                    }
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Validar un campo individual
+        validateField(field) {
+            if (field.required) {
+                if (field.type === 'checkbox' || field.type === 'radio') {
+                    const name = field.name;
+                    const isChecked = document.querySelector(`input[name="${name}"]:checked`);
+                    
+                    if (!isChecked) {
+                        const group = field.closest('.form-group') || field.closest('.grid-container');
+                        if (group) {
+                            group.classList.add('invalid-field');
+                        }
+                        return false;
+                    }
+                } else if (!field.value) {
+                    field.style.borderColor = 'var(--error-color)';
+                    field.parentNode.classList.add('invalid-field');
+                    return false;
+                } else if (field.type === 'number' && (field.value <= 0 || isNaN(field.value))) {
+                    field.style.borderColor = 'var(--error-color)';
+                    field.parentNode.classList.add('invalid-field');
+                    return false;
+                }
+            }
+            
+            field.style.borderColor = '#ddd';
+            field.parentNode?.classList?.remove('invalid-field');
+            return true;
+        }
+
+        // Barra de progreso (mismo sistema que adultos)
+        updateProgress() {
+            const sections = document.querySelectorAll('section');
+            const totalSections = sections.length;
+            
+            // Encontrar qué sección está actualmente en vista
+            let currentSectionIndex = -1;
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSectionIndex = index;
+                }
+            });
+            
+            if (currentSectionIndex === -1) {
+                // Si no se encuentra ninguna sección, usar la primera
+                currentSectionIndex = 0;
+            }
+            
+            const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
+            this.$.formProgress.style.height = `${progressPercentage}%`;
+            this.$.progressText.textContent = `Paso ${currentSectionIndex + 1}/${totalSections}`;
+            
+            // Actualizar pasos activos
+            this.$.progressSteps.forEach((step, index) => {
+                if (index < currentSectionIndex + 1) {
+                    step.classList.add('active');
                 } else {
-                    message = "Oportunidad para mejorar";
-                    icon = "fa-exclamation-triangle";
-                    color = "#F44336";
-                    tip = "Tu huella es mayor al promedio. Los consejos abajo pueden ayudarte a reducirla.";
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        // Calcular huella de carbono
+        calculateFootprint() {
+            try {
+                if (!this.validateFields()) {
+                    alert('Por favor completa todos los campos obligatorios marcados en rojo');
+                    return;
                 }
                 
-                // Árboles necesarios para absorber el CO2 (21kg por árbol/año)
-                const trees = Math.ceil((total * 1000) / 21);
+                const householdSize = parseInt(this.$.householdSize.value) || 1;
                 
-                // Equivalente en km recorridos en auto (2.3kg por km)
-                const kmAuto = Math.round((total * 1000) / 2.3);
+                // 1. Tecnología
+                let techFootprint = this.calculateTechFootprint(householdSize);
                 
-                this.$.comparisons.innerHTML = `
-                    <div class="comparison-message" style="border-left: 4px solid ${color}">
-                        <i class="fas ${icon}" style="color: ${color}"></i>
-                        <div>
-                            <h4>${message}</h4>
-                            <p>${tip}</p>
-                            <div class="comparison-details">
-                                <div class="comparison-item">
-                                    <i class="fas fa-tree"></i>
-                                    <span>Para compensar tu huella necesitarías <strong>${trees} árboles</strong> trabajando todo un año</span>
-                                </div>
-                                <div class="comparison-item">
-                                    <i class="fas fa-car"></i>
-                                    <span>Equivale a <strong>${kmAuto} km</strong> recorridos en auto</span>
-                                </div>
+                // 2. Consumo
+                let consumptionFootprint = this.calculateConsumptionFootprint();
+                
+                // 3. Hogar
+                let homeFootprint = this.calculateHomeFootprint(householdSize);
+                
+                // 4. Transporte
+                let transportFootprint = this.calculateTransportFootprint();
+                
+                // 5. Acciones (reducciones)
+                let actionsReduction = this.calculateActionsReduction();
+                
+                // Total en toneladas (por persona)
+                const total = (techFootprint + consumptionFootprint + homeFootprint + transportFootprint + actionsReduction) / 1000;
+                
+                // Mostrar resultados
+                this.displayResults(total, techFootprint, consumptionFootprint, homeFootprint, transportFootprint);
+                
+                // Mostrar comparativas visuales mejoradas
+                this.showComparisons(total);
+                
+                // Verificar logros
+                this.checkAchievements();
+                
+                // Mostrar resultados
+                this.$.results.style.display = 'block';
+                window.scrollTo({
+                    top: this.$.results.offsetTop,
+                    behavior: 'smooth'
+                });
+            } catch (error) {
+                console.error('Error al calcular la huella de carbono:', error);
+                alert('Ocurrió un error al calcular tu huella de carbono. Por favor intenta nuevamente.');
+            }
+        }
+
+        // Cálculos específicos por categoría
+        calculateTechFootprint(householdSize) {
+            let footprint = 0;
+            
+            footprint += this.factors.technology.whatsappGroups[document.getElementById('whatsapp_groups').value];
+            footprint += this.factors.technology.backgroundStreaming[document.getElementById('background_streaming').value];
+            footprint += this.factors.technology.memesStorage[document.getElementById('memes_storage').value];
+            footprint += this.factors.technology.deviceUsage[document.getElementById('device_usage').value];
+            
+            return footprint / householdSize;
+        }
+
+        calculateConsumptionFootprint() {
+            let footprint = 0;
+            
+            footprint += this.factors.consumption.clothingRepair[document.getElementById('clothing_repair').value];
+            footprint += this.factors.consumption.foodChoices[document.getElementById('food_choices').value];
+            footprint += this.factors.consumption.plasticBags[document.getElementById('plastic_bags').value];
+            
+            return footprint;
+        }
+
+        calculateHomeFootprint(householdSize) {
+            let footprint = 0;
+            
+            footprint += this.factors.home.familyHabits[document.getElementById('family_habits').value];
+            footprint += this.factors.home.homeWaste[document.getElementById('home_waste').value];
+            footprint += this.factors.home.leftovers[document.getElementById('leftovers').value];
+            
+            return footprint / householdSize;
+        }
+
+        calculateTransportFootprint() {
+            let footprint = 0;
+            
+            footprint += this.factors.transport.schoolTransport[document.getElementById('school_transport').value];
+            footprint += this.factors.transport.transportDistance[document.getElementById('transport_distance').value];
+            footprint += this.factors.transport.weekendMovement[document.getElementById('weekend_movement').value];
+            
+            return footprint;
+        }
+
+        calculateActionsReduction() {
+            let reduction = 0;
+            
+            reduction += this.factors.actions.ecoChallenge[document.getElementById('eco_challenge').value];
+            reduction += this.factors.actions.ecoGift[document.getElementById('eco_gift').value];
+            reduction += this.factors.actions.ecoInterest[document.getElementById('eco_interest').value];
+            
+            return reduction;
+        }
+
+        // Mostrar resultados
+        displayResults(total, techFootprint, consumptionFootprint, homeFootprint, transportFootprint) {
+            this.$.totalResult.textContent = total.toFixed(2);
+            
+            this.$.techValue.textContent = (techFootprint / 1000).toFixed(2) + ' ton';
+            this.$.consumptionValue.textContent = (consumptionFootprint / 1000).toFixed(2) + ' ton';
+            this.$.homeValue.textContent = (homeFootprint / 1000).toFixed(2) + ' ton';
+            this.$.transportValue.textContent = (transportFootprint / 1000).toFixed(2) + ' ton';
+            
+            // Actualizar barras de progreso
+            const maxCategory = Math.max(techFootprint, consumptionFootprint, homeFootprint, transportFootprint);
+            
+            this.$.techProgress.value = (techFootprint / maxCategory) * 100;
+            this.$.consumptionProgress.value = (consumptionFootprint / maxCategory) * 100;
+            this.$.homeProgress.value = (homeFootprint / maxCategory) * 100;
+            this.$.transportProgress.value = (transportFootprint / maxCategory) * 100;
+            
+            // Actualizar color según impacto
+            this.updateResultColor(total);
+        }
+
+        // Actualizar color del resultado según impacto
+        updateResultColor(total) {
+            const resultBox = document.querySelector('.result-box');
+            let color;
+            
+            if (total < 3) {
+                color = '#4CAF50'; // Verde - Muy bueno
+            } else if (total < 5) {
+                color = '#8BC34A'; // Verde claro - Bueno
+            } else if (total < 7) {
+                color = '#FFC107'; // Amarillo - Promedio
+            } else if (total < 9) {
+                color = '#FF9800'; // Naranja - Malo
+            } else {
+                color = '#F44336'; // Rojo - Muy malo
+            }
+            
+            resultBox.style.background = `linear-gradient(to right, ${color}, ${this.adjustColor(color, -20)})`;
+        }
+
+        adjustColor(color, amount) {
+            return '#' + color.replace(/^#/, '').replace(/../g, color => 
+                ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+        }
+
+        // Mostrar comparativas visuales mejoradas
+        showComparisons(total) {
+            let message, icon, color, tip;
+            
+            if (total < 3) {
+                message = "¡Eres un EcoHéroe!";
+                icon = "fa-check-circle";
+                color = "#4CAF50";
+                tip = "Tu huella es mucho menor que el promedio. ¡Sos un ejemplo para otros jóvenes!";
+            } else if (total < 5) {
+                message = "Buen trabajo";
+                icon = "fa-thumbs-up";
+                color = "#8BC34A";
+                tip = "Estás por debajo del promedio. Con pequeños cambios podés mejorar aún más.";
+            } else if (total < 7) {
+                message = "En el promedio";
+                icon = "fa-info-circle";
+                color = "#FFC107";
+                tip = "Estás como la mayoría. Mirá nuestros consejos para reducir tu impacto.";
+            } else {
+                message = "Oportunidad para mejorar";
+                icon = "fa-exclamation-triangle";
+                color = "#F44336";
+                tip = "Tu huella es mayor al promedio. Los consejos abajo pueden ayudarte a reducirla.";
+            }
+            
+            // Árboles necesarios para absorber el CO2 (21kg por árbol/año)
+            const trees = Math.ceil((total * 1000) / 21);
+            
+            // Equivalente en km recorridos en auto (2.3kg por km)
+            const kmAuto = Math.round((total * 1000) / 2.3);
+            
+            this.$.comparisons.innerHTML = `
+                <div class="comparison-message" style="border-left: 4px solid ${color}">
+                    <i class="fas ${icon}" style="color: ${color}"></i>
+                    <div>
+                        <h4>${message}</h4>
+                        <p>${tip}</p>
+                        <div class="comparison-details">
+                            <div class="comparison-item">
+                                <i class="fas fa-tree"></i>
+                                <span>Para compensar tu huella necesitarías <strong>${trees} árboles</strong> trabajando todo un año</span>
                             </div>
-                            <p class="small-text">Promedio argentino: 5.7 toneladas de CO₂ por persona al año</p>
+                            <div class="comparison-item">
+                                <i class="fas fa-car"></i>
+                                <span>Equivale a <strong>${kmAuto} km</strong> recorridos en auto</span>
+                            </div>
                         </div>
+                        <p class="small-text">Promedio argentino: 5.7 toneladas de CO₂ por persona al año</p>
                     </div>
-                `;
-            }
+                </div>
+            `;
+        }
 
-            // Verificar logros obtenidos
-            checkAchievements() {
-                const achievements = [];
-                
-                // Ejemplo de logros
-                if (document.getElementById('whatsapp_groups').value === 'none') {
-                    achievements.push({
-                        title: 'Limpieza Digital',
-                        icon: '📱',
-                        description: 'Por mantener tus chats libres de grupos inactivos'
-                    });
-                }
-                
-                if (document.getElementById('clothing_repair').value === 'repair' || 
-                    document.getElementById('clothing_repair').value === 'reuse') {
-                    achievements.push({
-                        title: 'Moda Sostenible',
-                        icon: '👕',
-                        description: 'Por reparar o reutilizar tu ropa en lugar de tirarla'
-                    });
-                }
-                
-                if (document.getElementById('school_transport').value === 'walk') {
-                    achievements.push({
-                        title: 'Transporte Verde',
-                        icon: '🚶‍♂️',
-                        description: 'Por ir a la escuela caminando o en bicicleta'
-                    });
-                }
-                
-                if (document.getElementById('family_habits').value !== 'none') {
-                    achievements.push({
-                        title: 'Agente de Cambio',
-                        icon: '✨',
-                        description: 'Por promover hábitos ecológicos en tu familia'
-                    });
-                }
-                
-                if (document.getElementById('eco_challenge').value !== 'none') {
-                    achievements.push({
-                        title: 'EcoRetador',
-                        icon: '🏆',
-                        description: 'Por aceptar un reto ecológico esta semana'
-                    });
-                }
-                
-                if (achievements.length > 0) {
-                    this.showAchievements(achievements);
-                }
+        // Verificar logros obtenidos
+        checkAchievements() {
+            const achievements = [];
+            
+            // Ejemplo de logros
+            if (document.getElementById('whatsapp_groups').value === 'none') {
+                achievements.push({
+                    title: 'Limpieza Digital',
+                    icon: '📱',
+                    description: 'Por mantener tus chats libres de grupos inactivos'
+                });
             }
+            
+            if (document.getElementById('clothing_repair').value === 'repair' || 
+                document.getElementById('clothing_repair').value === 'reuse') {
+                achievements.push({
+                    title: 'Moda Sostenible',
+                    icon: '👕',
+                    description: 'Por reparar o reutilizar tu ropa en lugar de tirarla'
+                });
+            }
+            
+            if (document.getElementById('school_transport').value === 'walk') {
+                achievements.push({
+                    title: 'Transporte Verde',
+                    icon: '🚶‍♂️',
+                    description: 'Por ir a la escuela caminando o en bicicleta'
+                });
+            }
+            
+            if (document.getElementById('family_habits').value !== 'none') {
+                achievements.push({
+                    title: 'Agente de Cambio',
+                    icon: '✨',
+                    description: 'Por promover hábitos ecológicos en tu familia'
+                });
+            }
+            
+            if (document.getElementById('eco_challenge').value !== 'none') {
+                achievements.push({
+                    title: 'EcoRetador',
+                    icon: '🏆',
+                    description: 'Por aceptar un reto ecológico esta semana'
+                });
+            }
+            
+            if (achievements.length > 0) {
+                this.showAchievements(achievements);
+            }
+        }
 
-            showAchievements(achievements) {
-                this.$.achievements.innerHTML = `
-                    <h3>🏆 Logros Obtenidos</h3>
-                    <div class="achievements-grid">
-                        ${achievements.map(ach => `
-                            <div class="achievement">
-                                <div class="achievement-icon">${ach.icon}</div>
-                                <div class="achievement-text">
-                                    <strong>${ach.title}</strong>
-                                    <p>${ach.description}</p>
-                                </div>
+        showAchievements(achievements) {
+            this.$.achievements.innerHTML = `
+                <h3>🏆 Logros Obtenidos</h3>
+                <div class="achievements-grid">
+                    ${achievements.map(ach => `
+                        <div class="achievement">
+                            <div class="achievement-icon">${ach.icon}</div>
+                            <div class="achievement-text">
+                                <strong>${ach.title}</strong>
+                                <p>${ach.description}</p>
                             </div>
-                        `).join('')}
-                    </div>
-                `;
-                
-                this.$.achievements.style.display = 'block';
-            }
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            this.$.achievements.style.display = 'block';
+        }
 
-            // Compartir resultados
-            shareResult(network) {
-                const total = this.$.totalResult.textContent;
-                const message = `¡Mi huella de carbono es de ${total} toneladas de CO₂eq anuales! 💡 Calculá la tuya y aprendé a reducirla con la calculadora de @KodyanHQ. #HuellaDeCarbono #SanLuisSustentable`;
-                const url = window.location.href;
-                const fullMessage = `${message}\n\n${url}`;
+        // Compartir resultados
+        shareResult(network) {
+            const total = this.$.totalResult.textContent;
+            const message = `¡Mi huella de carbono es de ${total} toneladas de CO₂eq anuales! 💡 Calculá la tuya y aprendé a reducirla con la calculadora de @KodyanHQ. #HuellaDeCarbono #SanLuisSustentable`;
+            const url = window.location.href;
+            const fullMessage = `${message}\n\n${url}`;
 
-                try {
-                    switch(network) {
-                        case 'whatsapp':
-                            window.open(`https://wa.me/?text=${encodeURIComponent(fullMessage)}`, '_blank');
-                            break;
-                        case 'twitter':
-                            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`, '_blank');
-                            break;
-                        case 'telegram':
-                            window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`, '_blank');
-                            break;
-                        case 'instagram':
-                            this.copyToClipboard(fullMessage);
-                            
-                            // Mostrar notificación personalizada para Instagram
-                            const instaNotification = document.createElement('div');
-                            instaNotification.style.position = 'fixed';
-                            instaNotification.style.top = '20px';
-                            instaNotification.style.left = '50%';
-                            instaNotification.style.transform = 'translateX(-50%)';
-                            instaNotification.style.backgroundColor = 'rgba(0,0,0,0.85)';
-                            instaNotification.style.color = 'white';
-                            instaNotification.style.padding = '12px 24px';
-                            instaNotification.style.borderRadius = '6px';
-                            instaNotification.style.zIndex = '1000';
-                            instaNotification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
-                            instaNotification.textContent = '¡Mensaje copiado! Pegalo en tu historia de Instagram 📲✨';
-                            
-                            document.body.appendChild(instaNotification);
-                            
+            try {
+                switch(network) {
+                    case 'whatsapp':
+                        window.open(`https://wa.me/?text=${encodeURIComponent(fullMessage)}`, '_blank');
+                        break;
+                    case 'twitter':
+                        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`, '_blank');
+                        break;
+                    case 'telegram':
+                        window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`, '_blank');
+                        break;
+                    case 'instagram':
+                        this.copyToClipboard(fullMessage);
+                        
+                        // Mostrar notificación personalizada para Instagram
+                        const instaNotification = document.createElement('div');
+                        instaNotification.style.position = 'fixed';
+                        instaNotification.style.top = '20px';
+                        instaNotification.style.left = '50%';
+                        instaNotification.style.transform = 'translateX(-50%)';
+                        instaNotification.style.backgroundColor = 'rgba(0,0,0,0.85)';
+                        instaNotification.style.color = 'white';
+                        instaNotification.style.padding = '12px 24px';
+                        instaNotification.style.borderRadius = '6px';
+                        instaNotification.style.zIndex = '1000';
+                        instaNotification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+                        instaNotification.textContent = '¡Mensaje copiado! Pegalo en tu historia de Instagram 📲✨';
+                        
+                        document.body.appendChild(instaNotification);
+                        
+                        setTimeout(() => {
+                            instaNotification.style.animation = 'fadeInOut 2s forwards';
                             setTimeout(() => {
-                                instaNotification.style.animation = 'fadeInOut 2s forwards';
-                                setTimeout(() => {
-                                    document.body.removeChild(instaNotification);
-                                }, 2000);
-                            }, 0);
-                            break;
-                    }
-                } catch (error) {
-                    console.error('Error al compartir:', error);
-                    alert('No se pudo compartir el resultado. Por favor intenta nuevamente.');
+                                document.body.removeChild(instaNotification);
+                            }, 2000);
+                        }, 0);
+                        break;
                 }
+            } catch (error) {
+                console.error('Error al compartir:', error);
+                alert('No se pudo compartir el resultado. Por favor intenta nuevamente.');
             }
+        }
 
-            // Copiar resultados al portapapeles
-            copyResultsToClipboard() {
-                const total = this.$.totalResult.textContent;
-                const tech = this.$.techValue.textContent;
-                const consumption = this.$.consumptionValue.textContent;
-                const home = this.$.homeValue.textContent;
-                const transport = this.$.transportValue.textContent;
-                
-                const textToCopy = `🌱 Mi Huella de Carbono (San Luis - Jóvenes):
+        // Copiar resultados al portapapeles
+        copyResultsToClipboard() {
+            const total = this.$.totalResult.textContent;
+            const tech = this.$.techValue.textContent;
+            const consumption = this.$.consumptionValue.textContent;
+            const home = this.$.homeValue.textContent;
+            const transport = this.$.transportValue.textContent;
+            
+            const textToCopy = `🌱 Mi Huella de Carbono (San Luis - Jóvenes):
 • Total: ${total} ton CO₂eq
 • Tecnología: ${tech}
 • Consumo: ${consumption}
@@ -1783,30 +1788,30 @@
 
 Calculá la tuya: ${window.location.href}`;
 
-                this.copyToClipboard(textToCopy);
+            this.copyToClipboard(textToCopy);
 
-                // Mostrar notificación
-                this.$.copyNotification.style.display = 'block';
-                setTimeout(() => {
-                    this.$.copyNotification.style.display = 'none';
-                }, 2500);
-            }
-
-            // Función auxiliar para copiar al portapapeles
-            copyToClipboard(text) {
-                const tempInput = document.createElement('textarea');
-                tempInput.value = text;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-            }
+            // Mostrar notificación
+            this.$.copyNotification.style.display = 'block';
+            setTimeout(() => {
+                this.$.copyNotification.style.display = 'none';
+            }, 2500);
         }
 
-        // Inicializar la calculadora cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            new CarbonFootprintCalculator();
-        });
-    </script>
+        // Función auxiliar para copiar al portapapeles
+        copyToClipboard(text) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+        }
+    }
+
+    // Inicializar la calculadora cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+        new CarbonFootprintCalculator();
+    });
+</script>
 </body>
 </html>
