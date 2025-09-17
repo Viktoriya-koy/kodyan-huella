@@ -376,8 +376,7 @@
         ¡Las plantas purifican el aire y alegran tu hogar! 🌿✨
     </div>
 </div>
-</div>
-            </fieldset>
+</fieldset>
             
             <!-- Pregunta 7: Juegos -->
             <fieldset>
@@ -402,8 +401,9 @@
                         ¿Sabías que en el Parque de las Naciones hay juegos divertidos? 🌳
                     </div>
                 </div>
-                
+             </fieldset>
                 <!-- Pregunta 8: Restos de frutas/verduras -->
+ <fieldset>
 <div class="form-group">
     <label>8. ¿Qué hacés con los restos de frutas o verduras?</label>
     <div class="options-container">
@@ -445,78 +445,67 @@
                     <!-- Se llena dinámicamente -->
                 </ul>
             </div>
-            
-            <!-- Promoción de Pixel Planeta -->
-            <div class="game-promo">
-                <h3 style="color: var(--primary-color);">¡Jugá y aprendé más!</h3>
-                <p>Descubrí <strong>Pixel Planeta</strong>, el juego oficial de Kodyan HQ:</p>
-                <img src="" alt="Pixel Planeta" style="border-radius: 10px;">
-                <p>Aprendé sobre ecología mientras te divertís</p>
-                <a href="" target="_blank" style="display: inline-block; background: var(--primary-color); color: white; padding: 12px 20px; border-radius: var(--border-radius); margin-top: 10px; text-decoration: none; font-weight: bold;">¡Jugar ahora!</a>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Mapeo de departamentos a localidades
         const localidadesPorDepto = {
-            ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo"],
-            belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial"],
-            chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo"],
-            coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande"],
-            general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Villa Reynolds", "Fraga", "La Esquina", "Alto Pelado"],
-            gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona"],
-            junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca"],
-            libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles"],
-            pueyrredon: ["San Luis (ciudad capital)", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero"]
+            ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
+            belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
+            chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
+            coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
+            general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Villa Reynolds", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
+            gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
+            junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
+            libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
+            pueyrredon: ["San Luis (ciudad capital)", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
         };
 
         // Respuestas del usuario
         const userResponses = {};
         
         // Tips personalizados por respuesta
-        const tipsPersonalizados = {
-            luces: {
-                apagar: "¡Seguí así! Apagar las luces ayuda mucho. ¿Sabías que en San Luis hay talleres de eficiencia energética para niños?",
-                aveces: "Podés poner un dibujo recordatorio en la puerta de tu habitación. ¡En la escuela XX de tu ciudad lo hicieron y funciona!",
-                prendidas: "Probá apagarlas hoy al salir. ¡Es como encontrar una moneda de $10 por cada luz apagada! 💰"
-            },
-            pantallas: {
-                apagar: "¡Perfecto! Ahora la energía que ahorraste podría iluminar el Parque de las Naciones por 1 hora.",
-                standby: "Los aparatos en standby gastan como 10 helados de energía al año. ¡Desenchufalos! 🍦",
-                afuera: "¡Genial! En San Luis hay más de 20 plazas para jugar. ¿Conocés la del Barrio XX en tu ciudad?"
-            },
-            agua: {
-                cerrar: "¡Bien hecho! El agua que ahorraste hoy llenaría 10 botellas de tu tamaño.",
-                abierta: "¿Probás cerrar la canilla hoy? ¡Es como salvar un pececito del Río Chorrillos! 🐟"
-            },
-            residuos: {
-                manualidades: "¡Creativo! ¿Sabías que en el Parque La Pedera hacen talleres con materiales reciclados?",
-                reciclar: "¡Excelente! Si toda tu clase reciclara, juntarían 1000 botellas en un mes.",
-                basura: "¿Probás aplastar las botellas? Ocupan menos espacio. ¡En tu ciudad hay un Punto Verde en XX!"
-            },
-            comida: {
-                compartir: "¡Qué bien! Así como compartís con tu mascota, en San Luis hay bancos de alimentos que reciben donaciones.",
-                guardar: "¡Inteligente! Guardar comida es como tener un tesoro escondido en la heladera.",
-                tirar: "La próxima vez podés pedir menos comida. ¡En los comedores escolares de San Luis enseñan a servir porciones justas!"
-            },
-            restos_comida: {
-    comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta.",
-    compost: "¡Perfecto! El compost reduce la basura y nutre la tierra.",
-    tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento?",
-},
-            juegos: {
-                afuera: "¡Saludable! El aire libre de San Luis es de los más limpios de Argentina. ¡Disfrutalo!",
-                mesa: "¿Hacés manualidades con materiales reciclados? En la Biblioteca XX de tu ciudad tienen talleres gratis.",
-                pantallas: "¿Probás <strong>Pixel Planeta</strong>? Es un juego creado por Kodyan HQ para aprender ecología."
-            },
-            plantas_casa: {
-    muchas: "¡Qué maravilla! Tu hogar es un pulmón verde 🌿",
-    algunas: "¡Cada plantita cuenta! Podés ir agregando más poco a poco.",
-    ninguna: "¿Probás empezar con una plantita fácil como un potus?",
-    gustaria_tener: "¡Es un lindo proyecto! Empezá con plantas resistentes."
-}
-        };
+        const ttipsPersonalizados = {
+    luces: {
+        apagar: "¡Seguí así! Apagar las luces ayuda mucho. ¿Sabías que en San Luis hay talleres de eficiencia energética para niños?",
+        aveces: "Podés poner un dibujo recordatorio en la puerta de tu habitación. ¡En muchas escuelas de la provincia lo hicieron y funciona!",
+        prendidas: "Probá apagarlas hoy al salir. ¡Es como encontrar una moneda de $10 por cada luz apagada! 💰"
+    },
+    pantallas: {
+        apagar: "¡Perfecto! La energía que ahorraste podría cargar 10 celulares. ¡Impresionante!",
+        standby: "Los aparatos en standby gastan energía como 10 helados al año. ¡Desenchufalos! 🍦",
+        afuera: "¡Genial! En San Luis hay más de 20 plazas para jugar. ¿Conocés la más cercana a tu casa?"
+    },
+    agua: {
+        cerrar: "¡Bien hecho! El agua que ahorraste hoy equivale a 20 botellas de agua.",
+        abierta: "¿Probás cerrar la canilla hoy? ¡Cada minuto ahorrado salva mucha agua! 💧"
+    },
+    residuos: {
+        manualidades: "¡Creativo! En muchos centros culturales de San Luis hacen talleres con materiales reciclados.",
+        reciclar: "¡Excelente! Si toda tu clase reciclara, juntarían miles de botellas en un mes.",
+        basura: "¿Probás aplastar las botellas? Ocupan menos espacio. ¡Preguntá en tu municipio dónde hay Puntos Verdes!"
+    },
+    comida: {
+        compartir: "¡Qué bien! En San Luis hay programas que reciben donaciones de alimentos para quienes más necesitan.",
+        guardar: "¡Inteligente! Guardar comida es como tener un tesoro escondido en la heladera.",
+        tirar: "La próxima vez podés pedir menos comida. ¡En muchos comedores enseñan a servir porciones justas!"
+    },
+    restos_comida: {
+        comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta y tu salud.",
+        compost: "¡Perfecto! El compost reduce la basura y nutre la tierra. ¡San Luis promueve el compostaje!",
+        tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento? Es más fácil de lo que parece.",
+        dar_plantas_mascotas: "¡Muy bien! Aprovechás los nutrientes de forma natural y nutritiva."
+    },
+    plantas_casa: {
+        muchas: "¡Qué maravilla! Tu hogar es un pequeño pulmón verde que purifica el aire 🌿",
+        algunas: "¡Cada plantita cuenta! Podés ir agregando más poco a poco. ¡San Luis tiene viveros con plantines!",
+        ninguna: "¿Probás empezar con una plantita fácil como un potus o una suculenta? Son muy resistentes.",
+        gustaria_tener: "¡Es un lindo proyecto! Empezá con plantas resistentes que necesiten poco cuidado."
+    },
+    juegos: {
+        afuera: "¡Saludable! El aire libre de San Luis es de los más limpios de Argentina. ¡Aprovechalo!",
+        mesa: "¿Hacés manualidades? En muchas bibliotecas y centros culturales tienen talleres creativos.",
+        pantallas: "¿Sabías que hay aplicaciones educativas que te enseñan sobre ecología? ¡Podés aprender jugando!"
+    }
+};
         
         // Cargar localidades cuando seleccionan departamento
         document.getElementById('departamento').addEventListener('change', function() {
