@@ -326,7 +326,7 @@
                         </button>
                     </div>
                     <div id="tip-residuos" class="question-tip">
-                        En Villa Mercedes hay Puntos Verdes móviles que reciben reciclables ♻️
+                        ¿Sabías que podés hacer arte con materiales reciclados? ¡Es divertido y ayuda al planeta! Empezá con algo simple como decorar una caja. ♻️
                     </div>
                 </div>
                 
@@ -480,7 +480,7 @@
     },
     residuos: {
         manualidades: "¡Creativo! En muchos centros culturales de San Luis hacen talleres con materiales reciclados.",
-        reciclar: "¡Excelente! Si toda tu clase reciclara, juntarían miles de botellas en un mes.",
+        reciclar: "¡Excelente! Si toda tu clase reciclara, podrian armar más de 10 autitos de botellas en un mes.",
         basura: "¿Probás aplastar las botellas? Ocupan menos espacio. ¡Preguntá en tu municipio dónde hay Puntos Verdes!"
     },
     comida: {
@@ -592,14 +592,14 @@
                         tips.push("<li>¿Probás cerrar la canilla cuando te lavás las manos? ¡Ahorrás 5 litros cada vez!</li>");
                         break;
                         
-                    case 'residuos':
-                        if (value !== 'basura') {
-                            contributions.push("♻️ 5 materiales reciclados");
-                            tips.push("<li>En tu ciudad hay un Punto Verde en [ubicación]. ¡Llevá tus reciclables!</li>");
-                        } else {
-                            tips.push("<li>¿Sabés que aplastando las botellas ocupás menos espacio? ¡Intentalo hoy!</li>");
-                        }
-                        break;
+                   case 'residuos':
+    if (value !== 'basura') {
+        contributions.push("♻️ 5 materiales reciclados");
+        tips.push("<li>¡Excelente! Separar los residuos es un superpoder ecológico. Preguntá en tu escuela o municipio dónde llevar materiales reciclables.</li>");
+    } else {
+        tips.push("<li>¿Probás empezar separando solo las botellas? Es fácil y hace una gran diferencia. ¡Podés decorar un tacho especial!</li>");
+    }
+    break;
                         
                     case 'naturaleza':
                         contributions.push("🌳 1 árbol protegido");
