@@ -791,7 +791,7 @@
         
         <main>
             <h1>Descubrí tu impacto ambiental</h1>
-            <p class="intro-text">El promedio en Argentina es de 5.7 toneladas de CO₂eq por persona al año</p>
+            <p class="intro-text">El promedio en Argentina es de 4.15 toneladas de CO₂eq por persona al año</p>
             
             <form id="carbonForm">
                 <!-- Sección 1: Datos Demográficos -->
@@ -1223,7 +1223,7 @@
                 <h2>Tu Huella de Carbono Anual</h2>
                 <div class="result-box">
                     <p>Total: <span id="totalResult">0</span> toneladas de CO₂eq</p>
-                    <p class="comparison">Promedio argentino: 5.7 toneladas por persona</p>
+                    <p class="comparison">Promedio argentino: 4.15 toneladas por persona</p>
                 </div>
                 
                 <!-- Comparativas visuales mejoradas -->
@@ -1798,30 +1798,36 @@
             }
 
             // Mostrar comparativas visuales mejoradas (Alternativa 3)
-            showComparisons(total) {
-                let message, icon, color, tip;
-                
-                if (total < 3) {
-                    message = "¡Excelente!";
-                    icon = "fa-check-circle";
-                    color = "#4CAF50";
-                    tip = "Tu huella es significativamente menor que el promedio argentino de 5.7 toneladas. ¡Sigue así!";
-                } else if (total < 5) {
-                    message = "Buen trabajo";
-                    icon = "fa-thumbs-up";
-                    color = "#8BC34A";
-                    tip = "Estás por debajo del promedio. Pequeños cambios pueden reducir aún más tu impacto.";
-                } else if (total < 7) {
-                    message = "En el promedio";
-                    icon = "fa-info-circle";
-                    color = "#FFC107";
-                    tip = "Estás en el rango típico argentino. Revisa nuestros consejos para mejorar.";
-                } else {
-                    message = "Oportunidad para mejorar";
-                    icon = "fa-exclamation-triangle";
-                    color = "#F44336";
-                    tip = "Tu huella es mayor al promedio. Los consejos abajo pueden ayudarte a reducirla.";
-                }
+           showComparisons(total) {
+    let message, icon, color, tip;
+    
+    if (total < 2.5) {
+        message = "¡Excelente!";
+        icon = "fa-check-circle";
+        color = "#4CAF50";
+        tip = "Tu huella es excelente. ¡Sos un ejemplo para otros!";
+    } else if (total < 4.0) {
+        message = "Muy bien";
+        icon = "fa-thumbs-up";
+        color = "#8BC34A";
+        tip = "Estás por debajo del promedio argentino. ¡Vas muy bien!";
+    } else if (total < 5.0) {
+        message = "En el promedio";
+        icon = "fa-info-circle";
+        color = "#FFC107";
+        tip = "Estás cerca del promedio argentino. Pequeños cambios harán diferencia.";
+    } else if (total < 7.0) {
+        message = "Oportunidad para mejorar";
+        icon = "fa-exclamation-triangle";
+        color = "#FF9800";
+        tip = "Tu huella está por encima del promedio. Nuestros consejos te ayudarán.";
+    } else {
+        message = "Atención: Huella elevada";
+        icon = "fa-exclamation-circle";
+        color = "#F44336";
+        tip = "Tu huella es significativamente mayor al promedio. Te ayudaremos a reducirla.";
+    }
+}
                 
                 // Árboles necesarios para absorber el CO2 (21kg por árbol/año)
                 const trees = Math.ceil((total * 1000) / 21);
