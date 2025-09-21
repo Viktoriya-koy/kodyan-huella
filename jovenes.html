@@ -836,37 +836,14 @@
                             <option value="16-18">16 a 18 años</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="departamento">¿En qué departamento vivís?</label>
-                        <select id="departamento" required aria-labelledby="section1 departamento">
-                            <option value="">Seleccionar...</option>
-                            <option value="ayacucho">Ayacucho</option>
-                            <option value="belgrano">Belgrano</option>
-                            <option value="chacabuco">Chacabuco</option>
-                            <option value="coronel_princles">Coronel Pringles</option>
-                            <option value="general_pedernera">General Pedernera</option>
-                            <option value="gobernador_dupuy">Gobernador Dupuy</option>
-                            <option value="junin">Junín</option>
-                            <option value="libertador">Libertador General San Martín</option>
-                            <option value="pueyrredon">Juan Martín de Pueyrredón</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="localidad">¿En qué localidad vivís?</label>
-                        <select id="localidad" disabled required aria-labelledby="section1 localidad">
-                            <option value="">Primero seleccioná un departamento</option>
-                        </select>
-                    </div>
-                    
+                                       
                     <div class="form-group">
                         <label for="household_size">¿Cuántas personas viven en tu casa?</label>
                         <input type="number" id="household_size" min="1" max="20" value="1" required
                         style="width: 80px;" aria-labelledby="section1 household_size">
                     </div>
                     
-                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a priorizar soluciones ambientales en tu zona.</p>
+                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a analizar soluciones ambientales en tu zona.</p>
                 </section>
 
                 <!-- Sección 2: Tecnología & Redes -->
@@ -1218,35 +1195,7 @@
             window.addEventListener('load', () => this.updateProgress());
         }
 
-        // Configurar localidades por departamento
-        setupLocalidades() {
-            const localidadesPorDepto = {
-                ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
-                belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
-                chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
-                coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
-                general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
-                gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
-                junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
-                libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
-                pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
-            };
-
-            this.$.departamento.addEventListener('change', () => {
-                const depto = this.$.departamento.value;
-                this.$.localidad.innerHTML = '<option value="">Seleccionar localidad...</option>';
-                
-                if (depto) {
-                    this.$.localidad.disabled = false;
-                    localidadesPorDepto[depto].forEach(localidad => {
-                        const option = document.createElement('option');
-                        option.value = localidad.toLowerCase().replace(/ /g, '_');
-                        option.textContent = localidad;
-                        this.$.localidad.appendChild(option);
-                    });
-                } else {
-                    this.$.localidad.disabled = true;
-                }
+        
             });
         }
 
