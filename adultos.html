@@ -808,37 +808,14 @@
                             <option value="65+">Más de 65 años</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="departamento">¿En qué departamento vivís?</label>
-                        <select id="departamento" required aria-labelledby="section1 departamento">
-                            <option value="">Seleccionar...</option>
-                            <option value="ayacucho">Ayacucho</option>
-                            <option value="belgrano">Belgrano</option>
-                            <option value="chacabuco">Chacabuco</option>
-                            <option value="coronel_princles">Coronel Pringles</option>
-                            <option value="general_pedernera">General Pedernera</option>
-                            <option value="gobernador_dupuy">Gobernador Dupuy</option>
-                            <option value="junin">Junín</option>
-                            <option value="libertador">Libertador General San Martín</option>
-                            <option value="pueyrredon">Juan Martín de Pueyrredón</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="localidad">¿En qué localidad vivís?</label>
-                        <select id="localidad" disabled required aria-labelledby="section1 localidad">
-                            <option value="">Primero seleccioná un departamento</option>
-                        </select>
-                    </div>
-                    
+                                        
                     <div class="form-group">
                         <label for="household_size">¿Cuántas personas viven en tu casa?</label>
                         <input type="number" id="household_size" min="1" max="20" value="1" required
                         style="width: 80px;" aria-labelledby="section1 household_size">
                     </div>
                     
-                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a priorizar soluciones ambientales en tu zona.</p>
+                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a analizar problemáticas ambientales en tu zona.</p>
                 </section>
 
                 <!-- Sección 2: Electrodomésticos -->
@@ -1334,7 +1311,6 @@
                 this.initEvents();
                 this.factors = this.getCalculationFactors();
                 this.completedSections = new Set();
-                this.initDepartamentoLocalidad();
             }
 
             // Cachear elementos del DOM
@@ -1365,9 +1341,9 @@
                     formProgress: document.getElementById('formProgress'),
                     progressText: document.getElementById('progressText'),
                     progressSteps: document.querySelectorAll('.progress-step'),
-                    departamento: document.getElementById('departamento'),
-                    localidad: document.getElementById('localidad')
-                };
+              
+                
+        };
 
                 // Cachear todos los campos requeridos
                 this.$.requiredFields = this.$.form.querySelectorAll('[required]');
@@ -1417,34 +1393,10 @@
                 }, true);
             }
 
-            // Inicializar mapeo de departamento y localidad
-            initDepartamentoLocalidad() {
-                const localidadesPorDepto = {
-                    ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo"],
-                    belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial"],
-                    chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo"],
-                    coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande"],
-                    general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Fraga", "La Esquina", "Alto Pelado"],
-                    gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona"],
-                    junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca"],
-                    libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles"],
-                    pueyrredon: ["San Luis Capital", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero"]
                 };
 
-                this.$.departamento.addEventListener('change', () => {
-                    const depto = this.$.departamento.value;
-                    this.$.localidad.innerHTML = '<option value="">Seleccionar localidad...</option>';
-                    this.$.localidad.disabled = !depto;
-                    
-                    if (depto) {
-                        localidadesPorDepto[depto].forEach(localidad => {
-                            const option = document.createElement('option');
-                            option.value = localidad.toLowerCase().replace(/ /g, '_');
-                            option.textContent = localidad;
-                            this.$.localidad.appendChild(option);
-                        });
-                    }
-                });
+        
+          });
             }
 
             // Validar una sección completa
