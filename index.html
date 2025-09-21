@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodyan HQ - Tu Huella de Carbono</title>
+    <title>Calculadora de Huella de Carbono - Kodyan HQ</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -62,7 +61,7 @@
             margin-bottom: 20px;
         }
         
-        select, input {
+        select {
             width: 100%;
             padding: 15px;
             margin: 15px 0;
@@ -75,7 +74,7 @@
             transition: all 0.3s ease;
         }
         
-        select:focus, input:focus {
+        select:focus {
             outline: none;
             border-color: var(--koy-primary);
             box-shadow: 0 0 0 3px rgba(40, 115, 110, 0.2);
@@ -119,37 +118,6 @@
         
         .brand strong {
             color: var(--koy-primary);
-        }
-        
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-            margin-left: 5px;
-        }
-        
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 300px;
-            background-color: #333;
-            color: #fff;
-            text-align: left;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-        
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
         }
         
         .localidad-group {
@@ -201,56 +169,61 @@
         </div>
         
         <h1>Calculadora de Huella de Carbono</h1>
-        <p>¡Empecemos por tu ubicación! Seleccioná tu provincia para continuar</p>
+        <p>¡Empecemos por tu edad y ubicación! Completá los datos para continuar</p>
         
-        <form id="locationForm">
-            <select id="provincia" required>
-                <option value="">-- Seleccioná tu provincia --</option>
-                <option value="caba">Ciudad de Buenos Aires</option>
-                <option value="buenos_aires">Buenos Aires</option>
-                <option value="catamarca">Catamarca</option>
-                <option value="chaco">Chaco</option>
-                <option value="chubut">Chubut</option>
-                <option value="cordoba">Córdoba</option>
-                <option value="corrientes">Corrientes</option>
-                <option value="entre_rios">Entre Ríos</option>
-                <option value="formosa">Formosa</option>
-                <option value="jujuy">Jujuy</option>
-                <option value="la_pampa">La Pampa</option>
-                <option value="la_rioja">La Rioja</option>
-                <option value="mendoza">Mendoza</option>
-                <option value="misiones">Misiones</option>
-                <option value="neuquen">Neuquén</option>
-                <option value="rio_negro">Río Negro</option>
-                <option value="salta">Salta</option>
-                <option value="san_juan">San Juan</option>
-                <option value="san_luis">San Luis</option>
-                <option value="santa_cruz">Santa Cruz</option>
-                <option value="santa_fe">Santa Fe</option>
-                <option value="santiago">Santiago del Estero</option>
-                <option value="tierra_fuego">Tierra del Fuego</option>
-                <option value="tucuman">Tucumán</option>
+        <select id="edad" required>
+            <option value="">-- Seleccioná tu edad --</option>
+            <option value="ninos">6 a 12 años</option>
+            <option value="jovenes">13 a 18 años</option>
+            <option value="adultos">19 años o más</option>
+        </select>
+        
+        <select id="provincia" required>
+            <option value="">-- Seleccioná tu provincia --</option>
+            <option value="caba">Ciudad de Buenos Aires</option>
+            <option value="buenos_aires">Buenos Aires</option>
+            <option value="catamarca">Catamarca</option>
+            <option value="chaco">Chaco</option>
+            <option value="chubut">Chubut</option>
+            <option value="cordoba">Córdoba</option>
+            <option value="corrientes">Corrientes</option>
+            <option value="entre_rios">Entre Ríos</option>
+            <option value="formosa">Formosa</option>
+            <option value="jujuy">Jujuy</option>
+            <option value="la_pampa">La Pampa</option>
+            <option value="la_rioja">La Rioja</option>
+            <option value="mendoza">Mendoza</option>
+            <option value="misiones">Misiones</option>
+            <option value="neuquen">Neuquén</option>
+            <option value="rio_negro">Río Negro</option>
+            <option value="salta">Salta</option>
+            <option value="san_juan">San Juan</option>
+            <option value="san_luis">San Luis</option>
+            <option value="santa_cruz">Santa Cruz</option>
+            <option value="santa_fe">Santa Fe</option>
+            <option value="santiago">Santiago del Estero</option>
+            <option value="tierra_fuego">Tierra del Fuego</option>
+            <option value="tucuman">Tucumán</option>
+        </select>
+        
+        <select id="departamento" disabled required>
+            <option value="">Primero seleccioná una provincia</option>
+        </select>
+        
+        <div id="localidadGroup" class="localidad-group">
+            <select id="localidad" disabled>
+                <option value="">Seleccioná localidad</option>
             </select>
-            
-            <select id="departamento" disabled required>
-                <option value="">Primero seleccioná una provincia</option>
-            </select>
-            
-            <div id="localidadGroup" class="localidad-group">
-                <select id="localidad" disabled>
-                    <option value="">Seleccioná localidad</option>
-                </select>
-            </div>
-            
-            <div id="seccionInfo" class="seccion-info" style="display: none;">
-                <h4>Partidos incluidos en esta sección:</h4>
-                <div id="partidosList"></div>
-            </div>
-            
-            <button type="button" id="continueBtn" disabled>
-                <i class="fas fa-arrow-right"></i> CONTINUAR
-            </button>
-        </form>
+        </div>
+        
+        <div id="seccionInfo" class="seccion-info" style="display: none;">
+            <h4>Partidos incluidos en esta sección:</h4>
+            <div id="partidosList"></div>
+        </div>
+        
+        <button id="continueBtn" onclick="irACalculadora()" disabled>
+            <i class="fas fa-arrow-right"></i> CONTINUAR
+        </button>
         
         <div class="brand">
             Una herramienta de <strong>Kodyan HQ</strong>
@@ -409,19 +382,36 @@
             }
         };
 
+        // Función para verificar si todos los campos están completos
+        function verificarCampos() {
+            const edad = document.getElementById('edad').value;
+            const provincia = document.getElementById('provincia').value;
+            const departamento = document.getElementById('departamento').value;
+            const localidad = document.getElementById('localidad');
+            
+            let camposCompletos = edad && provincia && departamento;
+            
+            // Si es San Luis, también verificar la localidad
+            if (provincia === 'san_luis' && localidad) {
+                camposCompletos = camposCompletos && localidad.value;
+            }
+            
+            document.getElementById('continueBtn').disabled = !camposCompletos;
+        }
+
+        // Configurar event listeners para los campos
+        document.getElementById('edad').addEventListener('change', verificarCampos);
         document.getElementById('provincia').addEventListener('change', function() {
             const provinciaId = this.value;
             const departamentoSelect = document.getElementById('departamento');
             const localidadGroup = document.getElementById('localidadGroup');
             const seccionInfo = document.getElementById('seccionInfo');
-            const continueBtn = document.getElementById('continueBtn');
             
             // Resetear
             departamentoSelect.innerHTML = '<option value="">Seleccionar...</option>';
             departamentoSelect.disabled = true;
             localidadGroup.style.display = 'none';
             seccionInfo.style.display = 'none';
-            continueBtn.disabled = true;
             
             if (provinciaId && ubicaciones[provinciaId]) {
                 departamentoSelect.disabled = false;
@@ -439,6 +429,8 @@
                     localidadGroup.style.display = 'block';
                 }
             }
+            
+            verificarCampos();
         });
 
         document.getElementById('departamento').addEventListener('change', function() {
@@ -447,12 +439,10 @@
             const localidadSelect = document.getElementById('localidad');
             const seccionInfo = document.getElementById('seccionInfo');
             const partidosList = document.getElementById('partidosList');
-            const continueBtn = document.getElementById('continueBtn');
             
             // Resetear
             localidadSelect.disabled = true;
             seccionInfo.style.display = 'none';
-            continueBtn.disabled = !departamento;
             
             if (provinciaId && departamento) {
                 // Cargar localidades para San Luis
@@ -481,39 +471,38 @@
                     });
                     partidosList.appendChild(ul);
                 }
-                
-                continueBtn.disabled = false;
             }
+            
+            verificarCampos();
         });
 
-        document.getElementById('localidad').addEventListener('change', function() {
-            const continueBtn = document.getElementById('continueBtn');
-            continueBtn.disabled = !this.value;
-        });
+        document.getElementById('localidad').addEventListener('change', verificarCampos);
 
-        document.getElementById('continueBtn').addEventListener('click', function() {
+        function irACalculadora() {
+            const edad = document.getElementById('edad').value;
             const provincia = document.getElementById('provincia').value;
             const departamento = document.getElementById('departamento').value;
             const localidad = document.getElementById('localidad').value || '';
             
-            if (provincia && departamento) {
-                // Guardar en localStorage para usar en la próxima página
-                localStorage.setItem('ubicacion', JSON.stringify({
-                    provincia: provincia,
-                    departamento: departamento,
-                    localidad: localidad
-                }));
-                
-                // Redirigir a la página de edades
-                window.location.href = 'inicio.html';
+            if (!edad || !provincia || !departamento) {
+                alert("¡Completá todos los campos para continuar!");
+                return;
             }
-        });
-
-        // Soporte para tecla Enter
-        document.getElementById('locationForm').addEventListener('keypress', function(e) {
+            
+            // Guardar en localStorage para usar en la próxima página
+            localStorage.setItem('ubicacion', JSON.stringify({
+                provincia: provincia,
+                departamento: departamento,
+                localidad: localidad
+            }));
+            
+            window.location.href = edad + ".html";
+        }
+        
+        // Enter key support
+        document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('continueBtn').click();
+                irACalculadora();
             }
         });
     </script>
