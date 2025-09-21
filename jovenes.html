@@ -843,7 +843,7 @@
                         style="width: 80px;" aria-labelledby="section1 household_size">
                     </div>
                     
-                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a analizar soluciones ambientales en tu zona.</p>
+                    <p class="small-text">Tus respuestas son anónimas y nos ayudan a analizar problemáticas ambientales en tu zona.</p>
                 </section>
 
                 <!-- Sección 2: Tecnología & Redes -->
@@ -1124,7 +1124,6 @@
         constructor() {
             this.cacheDOM();
             this.initEvents();
-            this.setupLocalidades();
             this.factors = this.getCalculationFactors();
         }
 
@@ -1134,8 +1133,6 @@
                 form: document.getElementById('carbonForm'),
                 results: document.getElementById('results'),
                 calculateBtn: document.getElementById('calculateBtn'),
-                departamento: document.getElementById('departamento'),
-                localidad: document.getElementById('localidad'),
                 householdSize: document.getElementById('household_size'),
                 totalResult: document.getElementById('totalResult'),
                 techValue: document.getElementById('techValue'),
