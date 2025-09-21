@@ -472,22 +472,7 @@
             }
         };
         
-        // Cargar localidades cuando seleccionan departamento
-        document.getElementById('departamento').addEventListener('change', function() {
-            const depto = this.value;
-            const localidadSelect = document.getElementById('localidad');
-            
-            localidadSelect.innerHTML = '<option value="">Seleccionar localidad...</option>';
-            localidadSelect.disabled = !depto;
-            
-            if (depto) {
-                localidadesPorDepto[depto].forEach(localidad => {
-                    const option = document.createElement('option');
-                    option.value = localidad.toLowerCase().replace(/ /g, '_');
-                    option.textContent = localidad;
-                    localidadSelect.appendChild(option);
-                });
-            }
+        
         });
 
         // Seleccionar opción en preguntas
