@@ -1315,39 +1315,37 @@
 
             // Cachear elementos del DOM
             cacheDOM() {
-                this.$ = {
-                    form: document.getElementById('carbonForm'),
-                    results: document.getElementById('results'),
-                    calculateBtn: document.getElementById('calculateBtn'),
-                    householdSize: document.getElementById('household_size'),
-                    totalResult: document.getElementById('totalResult'),
-                    homeValue: document.getElementById('homeValue'),
-                    transportValue: document.getElementById('transportValue'),
-                    foodValue: document.getElementById('foodValue'),
-                    shoppingValue: document.getElementById('shoppingValue'),
-                    digitalValue: document.getElementById('digitalValue'),
-                    homeProgress: document.getElementById('homeProgress'),
-                    transportProgress: document.getElementById('transportProgress'),
-                    foodProgress: document.getElementById('foodProgress'),
-                    shoppingProgress: document.getElementById('shoppingProgress'),
-                    digitalProgress: document.getElementById('digitalProgress'),
-                    comparisons: document.getElementById('comparisons'),
-                    shareWhatsApp: document.getElementById('shareWhatsApp'),
-                    shareInstagram: document.getElementById('shareInstagram'),
-                    shareTwitter: document.getElementById('shareTwitter'),
-                    shareTelegram: document.getElementById('shareTelegram'),
-                    copyResults: document.getElementById('copyResults'),
-                    copyNotification: document.getElementById('copyNotification'),
-                    formProgress: document.getElementById('formProgress'),
-                    progressText: document.getElementById('progressText'),
-                    progressSteps: document.querySelectorAll('.progress-step'),
-              
-                
-        };
+    this.$ = {
+        form: document.getElementById('carbonForm'),
+        results: document.getElementById('results'),
+        calculateBtn: document.getElementById('calculateBtn'),
+        householdSize: document.getElementById('household_size'),
+        totalResult: document.getElementById('totalResult'),
+        homeValue: document.getElementById('homeValue'),
+        transportValue: document.getElementById('transportValue'),
+        foodValue: document.getElementById('foodValue'),
+        shoppingValue: document.getElementById('shoppingValue'),
+        digitalValue: document.getElementById('digitalValue'),
+        homeProgress: document.getElementById('homeProgress'),
+        transportProgress: document.getElementById('transportProgress'),
+        foodProgress: document.getElementById('foodProgress'),
+        shoppingProgress: document.getElementById('shoppingProgress'),
+        digitalProgress: document.getElementById('digitalProgress'),
+        comparisons: document.getElementById('comparisons'),
+        shareWhatsApp: document.getElementById('shareWhatsApp'),
+        shareInstagram: document.getElementById('shareInstagram'),
+        shareTwitter: document.getElementById('shareTwitter'),
+        shareTelegram: document.getElementById('shareTelegram'),
+        copyResults: document.getElementById('copyResults'),
+        copyNotification: document.getElementById('copyNotification'),
+        formProgress: document.getElementById('formProgress'),
+        progressText: document.getElementById('progressText'),
+        progressSteps: document.querySelectorAll('.progress-step')
+    };
 
-                // Cachear todos los campos requeridos
-                this.$.requiredFields = this.$.form.querySelectorAll('[required]');
-            }
+    // Cachear todos los campos requeridos
+    this.$.requiredFields = this.$.form.querySelectorAll('[required]');
+}
 
             // Inicializar eventos
             initEvents() {
@@ -1393,13 +1391,7 @@
                 }, true);
             }
 
-                };
-
-        
-          });
-            }
-
-            // Validar una sección completa
+                      // Validar una sección completa
             validateSection(section) {
                 const sectionId = section.querySelector('h2').id;
                 const inputs = section.querySelectorAll('input, select, textarea');
