@@ -214,33 +214,7 @@
         <p style="text-align: center; color: var(--primary-color); font-size: 1.1em;">Para niños de 6 a 12 años</p>
         
         <form id="carbonForm">
-            <!-- Sección Común -->
-            <fieldset>
-                <legend><h2>Tus datos</h2></legend>
-                <div class="form-group">
-                    <label>¿En qué departamento de San Luis vivís?</label>
-                    <select id="departamento" style="padding: 12px; width: 100%; border-radius: var(--border-radius); border: 1px solid #ddd; font-size: 16px;" required>
-                        <option value="">Seleccionar...</option>
-                        <option value="ayacucho">Ayacucho</option>
-                        <option value="belgrano">Belgrano</option>
-                        <option value="chacabuco">Chacabuco</option>
-                        <option value="coronel_princles">Coronel Pringles</option>
-                        <option value="general_pedernera">General Pedernera</option>
-                        <option value="gobernador_dupuy">Gobernador Dupuy</option>
-                        <option value="junin">Junín</option>
-                        <option value="libertador">Libertador General San Martín</option>
-                        <option value="pueyrredon">Juan Martín de Pueyrredón</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>¿En qué localidad vivís?</label>
-                    <select id="localidad" style="padding: 12px; width: 100%; border-radius: var(--border-radius); border: 1px solid #ddd; font-size: 16px;" disabled required>
-                        <option value="">Primero seleccioná un departamento</option>
-                    </select>
-                </div>
-            </fieldset>
-
+        
             <!-- Pregunta 1: Luces -->
             <fieldset>
                 <legend><h2>En tu casa</h2></legend>
@@ -451,19 +425,6 @@
     </div>
 
     <script>
-        // Mapeo de departamentos a localidades
-        const localidadesPorDepto = {
-            ayacucho: ["Quines", "San Francisco del Monte de Oro", "Candelaria", "Lafinur", "Leandro N. Alem", "Los Cajones", "Lomas Blancas", "Río Grande", "Rincón del Carmen", "El Talita", "El Pantanillo", "Luján", "Otra"],
-            belgrano: ["Villa General Roca", "Nogolí", "La Calera", "Villa de la Quebrada", "Las Lagunas", "El Zapallar", "Las Chacras", "El Barrial", "Otra"],
-            chacabuco: ["Concarán", "Santa Rosa del Conlara", "Tilisarao", "Naschel", "Renca", "Papagayos", "Paso Grande", "Villa del Carmen", "El Recuerdo", "Otra"],
-            coronel_princles: ["La Toma", "El Durazno", "Saladillo", "El Trapiche", "Riocito", "Estancia Grande", "Otra"],
-            general_pedernera: ["Villa Mercedes", "Justo Daract", "Juan Jorba", "San José del Morro", "Juan Llerena", "Villa Reynolds", "Fraga", "La Esquina", "Alto Pelado", "Otra"],
-            gobernador_dupuy: ["Buena Esperanza", "Nueva Galia", "Unión", "Fortín El Patria", "Anchorena", "Batavia", "Fortuna", "Martín de Loyola", "Arizona", "Otra"],
-            junin: ["Santa Rosa de Conlara", "Merlo (Villa de Merlo)", "Carpintería", "Talita", "Cortaderas", "Cerro de Oro", "Piedra Blanca", "Otra"],
-            libertador: ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"],
-            pueyrredon: ["San Luis (ciudad capital)", "La Punta", "El Volcán", "Balde", "Zanjitas", "La Florida", "Jarilla", "Alto Pencoso", "Juana Koslay", "Mosmota", "Salinas del Bebedero", "Otra"]
-        };
-
         // Respuestas del usuario
         const userResponses = {};
         
