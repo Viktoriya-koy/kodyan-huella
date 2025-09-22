@@ -198,11 +198,11 @@
     </div>
 
     <script>
-        // Configuración Supabase - REEMPLAZA CON TUS DATOS!
-        const supabaseUrl = 'TU_URL_SUPABASE';
-        const supabaseKey = 'TU_KEY_SUPABASE';
-        
-        const supabase = supabaseUrl.startsWith('TU_') ? null : window.supabase.createClient(supabaseUrl, supabaseKey);
+        // CONFIGURACIÓN SUPABASE - USANDO TUS CREDENCIALES REALES
+const supabaseUrl = 'https://rrbzechsvaadttqslwed.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A';
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
         // Elementos del DOM
         const statsGrid = document.getElementById('statsGrid');
