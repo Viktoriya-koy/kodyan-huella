@@ -1016,7 +1016,7 @@
                 <section>
                     <h2 id="section5">5. Alimentación</h2>
                     <div class="form-group">
-                        <label>Frecuencia de consumo de carne semanal: <span class="tooltip-icon" data-tooltip="La producción de carne, especialmente vacuna, genera mayor huella de carbono">?</span></label>
+                        <label>Frecuencia de consumo de carne semanal: <span class="tooltip-icon" data-tooltip="La producción de carne, especialmente vacuna, generates mayor huella de carbono">?</span></label>
                         <div class="grid-container meat-grid" role="grid" aria-labelledby="section5">
                             <div class="grid-header" role="columnheader">Frecuencia</div>
                             <div class="grid-header" role="columnheader">Vaca</div>
@@ -1311,41 +1311,45 @@
                 this.initEvents();
                 this.factors = this.getCalculationFactors();
                 this.completedSections = new Set();
+                // Inicializar la barra de progreso
+                this.updateProgress();
             }
 
             // Cachear elementos del DOM
             cacheDOM() {
-    this.$ = {
-        form: document.getElementById('carbonForm'),
-        results: document.getElementById('results'),
-        calculateBtn: document.getElementById('calculateBtn'),
-        householdSize: document.getElementById('household_size'),
-        totalResult: document.getElementById('totalResult'),
-        homeValue: document.getElementById('homeValue'),
-        transportValue: document.getElementById('transportValue'),
-        foodValue: document.getElementById('foodValue'),
-        shoppingValue: document.getElementById('shoppingValue'),
-        digitalValue: document.getElementById('digitalValue'),
-        homeProgress: document.getElementById('homeProgress'),
-        transportProgress: document.getElementById('transportProgress'),
-        foodProgress: document.getElementById('foodProgress'),
-        shoppingProgress: document.getElementById('shoppingProgress'),
-        digitalProgress: document.getElementById('digitalProgress'),
-        comparisons: document.getElementById('comparisons'),
-        shareWhatsApp: document.getElementById('shareWhatsApp'),
-        shareInstagram: document.getElementById('shareInstagram'),
-        shareTwitter: document.getElementById('shareTwitter'),
-        shareTelegram: document.getElementById('shareTelegram'),
-        copyResults: document.getElementById('copyResults'),
-        copyNotification: document.getElementById('copyNotification'),
-        formProgress: document.getElementById('formProgress'),
-        progressText: document.getElementById('progressText'),
-        progressSteps: document.querySelectorAll('.progress-step')
-    };
+                this.$ = {
+                    form: document.getElementById('carbonForm'),
+                    results: document.getElementById('results'),
+                    calculateBtn: document.getElementById('calculateBtn'),
+                    householdSize: document.getElementById('household_size'),
+                    totalResult: document.getElementById('totalResult'),
+                    homeValue: document.getElementById('homeValue'),
+                    transportValue: document.getElementById('transportValue'),
+                    foodValue: document.getElementById('foodValue'),
+                    shoppingValue: document.getElementById('shoppingValue'),
+                    digitalValue: document.getElementById('digitalValue'),
+                    homeProgress: document.getElementById('homeProgress'),
+                    transportProgress: document.getElementById('transportProgress'),
+                    foodProgress: document.getElementById('foodProgress'),
+                    shoppingProgress: document.getElementById('shoppingProgress'),
+                    digitalProgress: document.getElementById('digitalProgress'),
+                    comparisons: document.getElementById('comparisons'),
+                    shareWhatsApp: document.getElementById('shareWhatsApp'),
+                    shareInstagram: document.getElementById('shareInstagram'),
+                    shareTwitter: document.getElementById('shareTwitter'),
+                    shareTelegram: document.getElementById('shareTelegram'),
+                    copyResults: document.getElementById('copyResults'),
+                    copyNotification: document.getElementById('copyNotification'),
+                    formProgress: document.getElementById('formProgress'),
+                    progressText: document.getElementById('progressText')
+                };
 
-    // Cachear todos los campos requeridos
-    this.$.requiredFields = this.$.form.querySelectorAll('[required]');
-}
+                // Cachear todos los campos requeridos
+                this.$.requiredFields = this.$.form.querySelectorAll('[required]');
+                
+                // Cachear los steps de progreso
+                this.$.progressSteps = document.querySelectorAll('.progress-step');
+            }
 
             // Inicializar eventos
             initEvents() {
@@ -1391,7 +1395,7 @@
                 }, true);
             }
 
-                      // Validar una sección completa
+            // Validar una sección completa
             validateSection(section) {
                 const sectionId = section.querySelector('h2').id;
                 const inputs = section.querySelectorAll('input, select, textarea');
@@ -1798,36 +1802,35 @@
             }
 
             // Mostrar comparativas visuales mejoradas (Alternativa 3)
-           showComparisons(total) {
-    let message, icon, color, tip;
-    
-    if (total < 2.5) {
-        message = "¡Excelente!";
-        icon = "fa-check-circle";
-        color = "#4CAF50";
-        tip = "Tu huella es excelente. ¡Sos un ejemplo para otros!";
-    } else if (total < 4.0) {
-        message = "Muy bien";
-        icon = "fa-thumbs-up";
-        color = "#8BC34A";
-        tip = "Estás por debajo del promedio argentino. ¡Vas muy bien!";
-    } else if (total < 5.0) {
-        message = "En el promedio";
-        icon = "fa-info-circle";
-        color = "#FFC107";
-        tip = "Estás cerca del promedio argentino. Pequeños cambios harán diferencia.";
-    } else if (total < 7.0) {
-        message = "Oportunidad para mejorar";
-        icon = "fa-exclamation-triangle";
-        color = "#FF9800";
-        tip = "Tu huella está por encima del promedio. Nuestros consejos te ayudarán.";
-    } else {
-        message = "Atención: Huella elevada";
-        icon = "fa-exclamation-circle";
-        color = "#F44336";
-        tip = "Tu huella es significativamente mayor al promedio. Te ayudaremos a reducirla.";
-    }
-}
+            showComparisons(total) {
+                let message, icon, color, tip;
+                
+                if (total < 2.5) {
+                    message = "¡Excelente!";
+                    icon = "fa-check-circle";
+                    color = "#4CAF50";
+                    tip = "Tu huella es excelente. ¡Sos un ejemplo para otros!";
+                } else if (total < 4.0) {
+                    message = "Muy bien";
+                    icon = "fa-thumbs-up";
+                    color = "#8BC34A";
+                    tip = "Estás por debajo del promedio argentino. ¡Vas muy bien!";
+                } else if (total < 5.0) {
+                    message = "En el promedio";
+                    icon = "fa-info-circle";
+                    color = "#FFC107";
+                    tip = "Estás cerca del promedio argentino. Pequeños cambios harán diferencia.";
+                } else if (total < 7.0) {
+                    message = "Oportunidad para mejorar";
+                    icon = "fa-exclamation-triangle";
+                    color = "#FF9800";
+                    tip = "Tu huella está por encima del promedio. Nuestros consejos te ayudarán.";
+                } else {
+                    message = "Atención: Huella elevada";
+                    icon = "fa-exclamation-circle";
+                    color = "#F44336";
+                    tip = "Tu huella es significativamente mayor al promedio. Te ayudaremos a reducirla.";
+                }
                 
                 // Árboles necesarios para absorber el CO2 (21kg por árbol/año)
                 const trees = Math.ceil((total * 1000) / 21);
