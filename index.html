@@ -229,7 +229,64 @@
             Una herramienta de <strong>Kodyan HQ</strong>
         </div>
     </div>
+// =============================================
+// INTEGRACIÓN SUPABASE - INDEX.HTML
+// =============================================
+const SUPABASE_CONFIG = {
+    url: 'https://rrbzechsvaadttqslwed.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A'
+};
 
+// Función para guardar la selección inicial
+async function guardarSeleccionInicial(edadGrupo, ubicacion) {
+    try {
+        const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
+        
+        const { data, error } = await supabase
+            .from('calculadora_inicial')
+            .insert([{
+                edad_grupo: edadGrupo,
+                provincia: ubicacion.provincia,
+                departamento: ubicacion.departamento,
+                localidad: ubicacion.localidad,
+                user_agent: navigator.userAgent
+            }]);
+            
+        if (error) {
+            console.error('Error guardando selección inicial:', error);
+        } else {
+            console.log('Selección inicial guardada:', data);
+        }
+    } catch (error) {
+        console.error('Error inesperado:', error);
+    }
+}
+
+// Modificar la función existente irACalculadora()
+function irACalculadora() {
+    const edad = document.getElementById('edad').value;
+    const provincia = document.getElementById('provincia').value;
+    const departamento = document.getElementById('departamento').value;
+    const localidad = document.getElementById('localidad').value || '';
+    
+    if (!edad || !provincia || !departamento) {
+        alert("¡Completá todos los campos para continuar!");
+        return;
+    }
+    
+    // Guardar en localStorage para usar en la próxima página
+    const ubicacion = {
+        provincia: provincia,
+        departamento: departamento,
+        localidad: localidad
+    };
+    localStorage.setItem('ubicacion', JSON.stringify(ubicacion));
+    
+    // Guardar también en Supabase (en segundo plano, no bloqueante)
+    guardarSeleccionInicial(edad, ubicacion);
+    
+    window.location.href = edad + ".html";
+}
     <script>
         // Mapeo completo de provincias y departamentos
         const ubicaciones = {
