@@ -1621,22 +1621,26 @@
                     
                     // 6. Huella Digital (no dividir)
                     let digitalFootprint = this.calculateDigitalFootprint();
-                    
                     // Total en toneladas (por persona)
-                    const total = (homeFootprint + transportFootprint + foodFootprint + shoppingFootprint + digitalFootprint + sustainabilityReduction) / 1000;
-                    
-                    // Mostrar resultados
-                    this.displayResults(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint);
-                    
-                    // Mostrar comparativas visuales mejoradas
-                    this.showComparisons(total);
-                    
-                    // Mostrar resultados
-                    this.$.results.style.display = 'block';
-                    window.scrollTo({
-                        top: this.$.results.offsetTop,
-                        behavior: 'smooth'
-                    });
+const total = (homeFootprint + transportFootprint + foodFootprint + shoppingFootprint + digitalFootprint + sustainabilityReduction) / 1000;
+
+// Mostrar resultados
+this.displayResults(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint);
+
+// Mostrar comparativas visuales mejoradas
+this.showComparisons(total);
+
+// GUARDAR EN SUPABASE DESPUÉS DE MOSTRAR RESULTADOS
+setTimeout(() => {
+    guardarRespuestasAdultos(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint);
+}, 1000);
+
+// Mostrar resultados
+this.$.results.style.display = 'block';
+window.scrollTo({
+    top: this.$.results.offsetTop,
+    behavior: 'smooth'
+});
                 } catch (error) {
                     console.error('Error al calcular la huella de carbono:', error);
                     alert('Ocurrió un error al calcular tu huella de carbono. Por favor intenta nuevamente.');
@@ -1959,7 +1963,7 @@ Calculá la tuya: ${window.location.href}`;
                 }, 2500);
             }
 
-            // Función auxiliar para copiar al portapapeles
+                        // Función auxiliar para copiar al portapapeles
             copyToClipboard(text) {
                 const tempInput = document.createElement('textarea');
                 tempInput.value = text;
@@ -1969,6 +1973,178 @@ Calculá la tuya: ${window.location.href}`;
                 document.body.removeChild(tempInput);
             }
         }
+
+        // =============================================
+        // INTEGRACIÓN SUPABASE - ADULTOS.HTML
+        // =============================================
+        const SUPABASE_CONFIG = {
+            url: 'https://rrbzechsvaadttqslwed.supabase.co',
+            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A'
+        };
+
+        // Función para guardar respuestas de adultos
+        async function guardarRespuestasAdultos(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint) {
+            try {
+                const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
+                
+                // Obtener ubicación del localStorage
+                const ubicacionGuardada = JSON.parse(localStorage.getItem('ubicacion') || '{}');
+                
+                // Obtener electrodomésticos seleccionados
+                const electrodomesticos = Array.from(document.querySelectorAll('.appliance:checked'))
+                    .map(cb => cb.id);
+                
+                // Obtener métodos de calefacción seleccionados
+                const heatingTypes = Array.from(document.querySelectorAll('input[name="heating"]:checked'))
+                    .map(cb => cb.value);
+
+                // Obtener consumo de carne
+                const meatConsumption = {
+                    vaca: document.querySelector('input[name="vaca"]:checked')?.value || 'none',
+                    cerdo: document.querySelector('input[name="cerdo"]:checked')?.value || 'none',
+                    pollo: document.querySelector('input[name="pollo"]:checked')?.value || 'none',
+                    pescado: document.querySelector('input[name="pescado"]:checked')?.value || 'none'
+                };
+
+                // Preparar datos
+                const datos = {
+                    provincia: ubicacionGuardada.provincia || 'No especificada',
+                    departamento: ubicacionGuardada.departamento || 'No especificado',
+                    localidad: ubicacionGuardada.localidad || '',
+                    institucion: '',
+                    
+                    // Sección 1: Datos Demográficos
+                    age_range: document.getElementById('age_range').value,
+                    household_size: parseInt(document.getElementById('household_size').value) || 1,
+                    
+                    // Sección 2: Electrodomésticos
+                    electrodomesticos: electrodomesticos,
+                    
+                    // Sección 3: Energía Hogar
+                    cooking_type: document.getElementById('cooking').value,
+                    water_heating: document.getElementById('water_heating').value,
+                    heating_types: heatingTypes,
+                    lighting: document.getElementById('lighting').value,
+                    
+                    // Sección 4: Transporte
+                    transport: document.getElementById('transport').value,
+                    commute_distance: document.getElementById('commute_distance').value,
+                    commute_days: document.getElementById('commute_days').value,
+                    long_trips: document.getElementById('long_trips').value,
+                    ride_hailing: document.getElementById('ride_hailing').value,
+                    
+                    // Sección 5: Alimentación
+                    meat_consumption: meatConsumption,
+                    vegetables_origin: document.getElementById('vegetables').value,
+                    food_waste: document.getElementById('food_waste').value,
+                    
+                    // Sección 6: Hábitos Consumo
+                    plastics_usage: document.getElementById('plastics').value,
+                    online_shopping: document.getElementById('online_shopping').value,
+                    delivery_frequency: document.getElementById('delivery').value,
+                    reusable_bags: document.getElementById('reusable_bags').value,
+                    device_replacement: document.getElementById('device_replacement').value,
+                    
+                    // Sección 7: Hábitos Sostenibles
+                    compost: document.getElementById('compost').value,
+                    recycling: document.getElementById('recycling').value,
+                    renewable_energy: document.getElementById('renewable_energy').value,
+                    eco_activities: document.getElementById('eco_activities').value,
+                    
+                    // Sección 8: Huella Digital
+                    photo_cleanup: document.getElementById('photo_cleanup').value,
+                    email_cleanup: document.getElementById('email_cleanup').value,
+                    background_apps: document.getElementById('background_apps').value,
+                    cloud_usage: document.getElementById('cloud_usage').value,
+                    
+                    // Resultados de huella
+                    huella_total: total,
+                    huella_hogar: homeFootprint / 1000,
+                    huella_transporte: transportFootprint / 1000,
+                    huella_alimentacion: foodFootprint / 1000,
+                    huella_consumo: shoppingFootprint / 1000,
+                    huella_digital: digitalFootprint / 1000
+                };
+
+                // Guardar en Supabase
+                const { data, error } = await supabase
+                    .from('calculadora_adultos')
+                    .insert([datos]);
+
+                if (error) {
+                    console.error('Error guardando datos adultos:', error);
+                } else {
+                    console.log('Datos adultos guardados:', data);
+                }
+                
+            } catch (error) {
+                console.error('Error inesperado adultos:', error);
+            }
+        }
+
+        // MODIFICAR LA FUNCIÓN calculateFootprint EXISTENTE
+        // Sobrescribimos el método para añadir el guardado
+        CarbonFootprintCalculator.prototype.calculateFootprint = function() {
+            // ... código original que ya existe ...
+            // Pero necesitamos capturar los resultados para guardarlos
+            
+            // Guardamos una referencia al método original
+            const originalCalculate = CarbonFootprintCalculator.prototype.calculateFootprint;
+            
+            return function() {
+                try {
+                    if (!this.validateFields()) {
+                        alert('Por favor completa todos los campos obligatorios marcados en rojo');
+                        return;
+                    }
+                    
+                    const householdSize = parseInt(this.$.householdSize.value) || 1;
+                    
+                    // 1. Energía Hogar
+                    let homeFootprint = this.calculateHomeFootprint(householdSize);
+                    
+                    // 2. Transporte
+                    let transportFootprint = this.calculateTransportFootprint();
+                    
+                    // 3. Alimentación
+                    let foodFootprint = this.calculateFoodFootprint();
+                    
+                    // 4. Consumo
+                    let shoppingFootprint = this.calculateShoppingFootprint();
+                    
+                    // 5. Sostenibilidad
+                    let sustainabilityReduction = this.calculateSustainabilityReduction();
+                    
+                    // 6. Huella Digital
+                    let digitalFootprint = this.calculateDigitalFootprint();
+                    
+                    // Total en toneladas
+                    const total = (homeFootprint + transportFootprint + foodFootprint + shoppingFootprint + digitalFootprint + sustainabilityReduction) / 1000;
+                    
+                    // Mostrar resultados (método original)
+                    this.displayResults(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint);
+                    
+                    // Mostrar comparativas
+                    this.showComparisons(total);
+                    
+                    // Mostrar resultados
+                    this.$.results.style.display = 'block';
+                    window.scrollTo({
+                        top: this.$.results.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // GUARDAR EN SUPABASE DESPUÉS DE MOSTRAR RESULTADOS
+                    setTimeout(() => {
+                        guardarRespuestasAdultos(total, homeFootprint, transportFootprint, foodFootprint, shoppingFootprint, digitalFootprint);
+                    }, 1000);
+                    
+                } catch (error) {
+                    console.error('Error al calcular la huella de carbono:', error);
+                    alert('Ocurrió un error al calcular tu huella de carbono. Por favor intenta nuevamente.');
+                }
+            };
+        }();
 
         // Inicializar la calculadora cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
