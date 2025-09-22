@@ -608,6 +608,78 @@
                 behavior: 'smooth'
             });
         }
+        // =============================================
+// INTEGRACIÓN SUPABASE - NINOS.HTML
+// =============================================
+const SUPABASE_CONFIG = {
+    url: 'https://rrbzechsvaadttqslwed.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A'
+};
+
+// Función para guardar respuestas
+async function guardarRespuestasNinos() {
+    try {
+        const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
+        
+        // Obtener ubicación del localStorage
+        const ubicacionGuardada = JSON.parse(localStorage.getItem('ubicacion') || '{}');
+        
+        // Preparar datos
+        const datos = {
+            provincia: ubicacionGuardada.provincia || 'No especificada',
+            departamento: ubicacionGuardada.departamento || 'No especificado', 
+            localidad: ubicacionGuardada.localidad || '',
+            escuela: '',
+            
+            // Respuestas
+            luces_habitacion: userResponses.luces,
+            pantallas_apagar: userResponses.pantallas,
+            canilla_cerrar: userResponses.agua,
+            residuos_botellas: userResponses.residuos,
+            comida_sobras: userResponses.comida,
+            plantas_casa: userResponses.plantas_casa,
+            juegos_preferidos: userResponses.juegos,
+            restos_comida: userResponses.restos_comida,
+            
+            // Resultados
+            estrellas_ecologicas: document.querySelectorAll('#result-list li').length,
+            perfil_guardian: obtenerPerfilGuardian(),
+            logros_obtenidos: Array.from(document.querySelectorAll('#result-list li')).map(li => li.textContent)
+        };
+
+        // Guardar en Supabase
+        const { data, error } = await supabase
+            .from('calculadora_ninos')
+            .insert([datos]);
+
+        if (error) {
+            console.error('Error guardando datos niños:', error);
+        } else {
+            console.log('Datos niños guardados:', data);
+        }
+        
+    } catch (error) {
+        console.error('Error inesperado niños:', error);
+    }
+}
+
+function obtenerPerfilGuardian() {
+    const estrellas = document.querySelectorAll('#result-list li').length;
+    if (estrellas >= 6) return 'Guardían Estelar';
+    if (estrellas >= 4) return 'Protector Ambiental'; 
+    if (estrellas >= 2) return 'Aprendiz Ecológico';
+    return 'Explorador en Camino';
+}
+
+// MODIFICAR FUNCIÓN EXISTENTE - Busca la función calculateResults() y añade al final:
+function calculateResults() {
+    // ... TODO tu código existente de calculateResults ...
+    
+    // ⬇️⬇️⬇️ AÑADIR ESTO AL FINAL DE LA FUNCIÓN EXISTENTE ⬇️⬇️⬇️
+    setTimeout(() => {
+        guardarRespuestasNinos();
+    }, 1000);
+}
     </script>
 </body>
 </html>
