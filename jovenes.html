@@ -696,16 +696,21 @@
             }
 
             calculatePotential() {
-                if (!this.validateAllFields()) {
-                    alert('Por favor completá todas las preguntas antes de continuar');
-                    return;
-                }
+    if (!this.validateAllFields()) {
+        alert('Por favor completá todas las preguntas antes de continuar');
+        return;
+    }
 
-                const profile = this.generateProfile();
-                this.displayResults(profile);
-                this.$.results.style.display = 'block';
-                this.$.results.scrollIntoView({ behavior: 'smooth' });
-            }
+    const profile = this.generateProfile();
+    this.displayResults(profile);
+    this.$.results.style.display = 'block';
+    this.$.results.scrollIntoView({ behavior: 'smooth' });
+    
+    // GUARDAR EN SUPABASE DESPUÉS DE MOSTRAR RESULTADOS
+    setTimeout(() => {
+        guardarRespuestasJovenes(profile);
+    }, 1000);
+}
 
             validateAllFields() {
                 let isValid = true;
@@ -888,7 +893,85 @@
                 `;
             }
         }
+  // =============================================
+        // INTEGRACIÓN SUPABASE - JOVENES.HTML
+        // =============================================
+        const SUPABASE_CONFIG = {
+            url: 'https://rrbzechsvaadttqslwed.supabase.co',
+            key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A'
+        };
 
+        // Función para guardar respuestas de jóvenes
+        async function guardarRespuestasJovenes(profile) {
+            try {
+                const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
+                
+                // Obtener ubicación del localStorage
+                const ubicacionGuardada = JSON.parse(localStorage.getItem('ubicacion') || '{}');
+                
+                // Obtener checkboxes seleccionados
+                const learningInterests = Array.from(document.querySelectorAll('input[name="learning_interests"]:checked'))
+                    .map(cb => cb.value);
+                const actionInterests = Array.from(document.querySelectorAll('input[name="action_interests"]:checked'))
+                    .map(cb => cb.value);
+
+                // Preparar datos
+                const datos = {
+                    provincia: ubicacionGuardada.provincia || 'No especificada',
+                    departamento: ubicacionGuardada.departamento || 'No especificado',
+                    localidad: ubicacionGuardada.localidad || '',
+                    escuela: '',
+                    
+                    // SECCIÓN 1: Tecnología & Redes
+                    whatsapp_groups: document.getElementById('whatsapp_groups').value,
+                    background_streaming: document.getElementById('background_streaming').value,
+                    memes_storage: document.getElementById('memes_storage').value,
+                    device_usage: document.getElementById('device_usage').value,
+                    
+                    // SECCIÓN 2: Consumo & Hábitos
+                    clothing_repair: document.getElementById('clothing_repair').value,
+                    food_choices: document.getElementById('food_choices').value,
+                    plastic_bags: document.getElementById('plastic_bags').value,
+                    
+                    // SECCIÓN 3: Hogar & Familia
+                    resourcefulness: document.getElementById('resourcefulness').value,
+                    desired_skill: document.getElementById('desired_skill').value,
+                    home_waste: document.getElementById('home_waste').value,
+                    leftovers: document.getElementById('leftovers').value,
+                    
+                    // SECCIÓN 4: Movilidad & Actividad
+                    school_transport: document.getElementById('school_transport').value,
+                    transport_distance: document.getElementById('transport_distance').value,
+                    weekend_movement: document.getElementById('weekend_movement').value,
+                    
+                    // SECCIÓN 5: Intereses y Conocimientos
+                    knowledge_level: document.getElementById('knowledge_level').value,
+                    knowledge_sharing: document.getElementById('knowledge_sharing').value,
+                    habits_improvement: document.getElementById('habits_improvement').value,
+                    learning_interests: learningInterests,
+                    action_interests: actionInterests,
+                    
+                    // Resultados del perfil
+                    profile_type: profile.profileType,
+                    skills: profile.skills,
+                    recomendaciones: profile.recommendations
+                };
+
+                // Guardar en Supabase
+                const { data, error } = await supabase
+                    .from('calculadora_jovenes')
+                    .insert([datos]);
+
+                if (error) {
+                    console.error('Error guardando datos jóvenes:', error);
+                } else {
+                    console.log('Datos jóvenes guardados:', data);
+                }
+                
+            } catch (error) {
+                console.error('Error inesperado jóvenes:', error);
+            }
+        }
         // Inicializar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
             new YouthCarbonCalculator();
