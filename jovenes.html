@@ -904,7 +904,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="food_choices">Tus hábitos alimenticios son más...</label>
+                        <label for="food_choices">Tous hábitos alimenticios son más...</label>
                         <select id="food_choices" aria-labelledby="section3 food_choices">
                             <option value="conscious">Conscientes y saludables</option>
                             <option value="homemade">Caseros y tradicionales</option>
@@ -1125,6 +1125,9 @@
             this.cacheDOM();
             this.initEvents();
             this.factors = this.getCalculationFactors();
+            this.completedSections = new Set();
+            // Inicializar la barra de progreso
+            this.updateProgress();
         }
 
         // Cachear elementos del DOM
@@ -1151,12 +1154,14 @@
                 copyResults: document.getElementById('copyResults'),
                 copyNotification: document.getElementById('copyNotification'),
                 formProgress: document.getElementById('formProgress'),
-                progressText: document.getElementById('progressText'),
-                progressSteps: document.querySelectorAll('.progress-step')
+                progressText: document.getElementById('progressText')
             };
 
             // Cachear todos los campos requeridos
             this.$.requiredFields = this.$.form.querySelectorAll('[required]');
+            
+            // Cachear los steps de progreso
+            this.$.progressSteps = document.querySelectorAll('.progress-step');
         }
 
         // Inicializar eventos
@@ -1187,13 +1192,42 @@
 
             this.$.copyResults.addEventListener('click', () => this.copyResultsToClipboard());
 
-            // Eventos para actualizar barra de progreso
-            window.addEventListener('scroll', () => this.updateProgress());
-            window.addEventListener('load', () => this.updateProgress());
+            // Eventos para validar campos y actualizar progreso
+            this.$.form.addEventListener('change', (e) => {
+                const section = e.target.closest('section');
+                if (section) {
+                    this.validateSection(section);
+                }
+            });
+
+            // Validar campos al salir de ellos
+            this.$.form.addEventListener('blur', (e) => {
+                if (e.target.matches('input, select')) {
+                    this.validateField(e.target);
+                }
+            }, true);
         }
 
-        
+        // Validar una sección completa
+        validateSection(section) {
+            const sectionId = section.querySelector('h2').id;
+            const inputs = section.querySelectorAll('input, select, textarea');
+            let allValid = true;
+            
+            inputs.forEach(input => {
+                if (!this.validateField(input)) {
+                    allValid = false;
+                }
             });
+            
+            // Actualizar estado de sección completada
+            if (allValid) {
+                this.completedSections.add(sectionId);
+            } else {
+                this.completedSections.delete(sectionId);
+            }
+            
+            this.updateProgress();
         }
 
         // Factores de cálculo (versión simplificada para jóvenes)
@@ -1361,32 +1395,19 @@
             return true;
         }
 
-        // Barra de progreso (mismo sistema que adultos)
+        // Barra de progreso
         updateProgress() {
             const sections = document.querySelectorAll('section');
             const totalSections = sections.length;
+            const completedCount = this.completedSections.size;
             
-            // Encontrar qué sección está actualmente en vista
-            let currentSectionIndex = -1;
-            sections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                    currentSectionIndex = index;
-                }
-            });
-            
-            if (currentSectionIndex === -1) {
-                // Si no se encuentra ninguna sección, usar la primera
-                currentSectionIndex = 0;
-            }
-            
-            const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
+            const progressPercentage = (completedCount / totalSections) * 100;
             this.$.formProgress.style.height = `${progressPercentage}%`;
-            this.$.progressText.textContent = `Paso ${currentSectionIndex + 1}/${totalSections}`;
+            this.$.progressText.textContent = `Paso ${completedCount}/${totalSections}`;
             
             // Actualizar pasos activos
             this.$.progressSteps.forEach((step, index) => {
-                if (index < currentSectionIndex + 1) {
+                if (index < completedCount) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
@@ -1428,7 +1449,6 @@
                 // Mostrar comparativas visuales mejoradas
                 this.showComparisons(total);
                 
-                         
                 // Mostrar resultados
                 this.$.results.style.display = 'block';
                 window.scrollTo({
@@ -1540,36 +1560,35 @@
         }
 
         // Mostrar comparativas visuales mejoradas
-     showComparisons(total) {
-    let message, icon, color, tip;
-    
-    if (total < 2.5) {
-        message = "¡Excelente!";
-        icon = "fa-check-circle";
-        color = "#4CAF50";
-        tip = "Tu huella es excelente. ¡Sos un ejemplo para otros!";
-    } else if (total < 4.0) {
-        message = "Muy bien";
-        icon = "fa-thumbs-up";
-        color = "#8BC34A";
-        tip = "Estás por debajo del promedio argentino. ¡Vas muy bien!";
-    } else if (total < 5.0) {
-        message = "En el promedio";
-        icon = "fa-info-circle";
-        color = "#FFC107";
-        tip = "Estás cerca del promedio argentino. Pequeños cambios harán diferencia.";
-    } else if (total < 7.0) {
-        message = "Oportunidad para mejorar";
-        icon = "fa-exclamation-triangle";
-        color = "#FF9800";
-        tip = "Tu huella está por encima del promedio. Nuestros consejos te ayudarán.";
-    } else {
-        message = "Atención: Huella elevada";
-        icon = "fa-exclamation-circle";
-        color = "#F44336";
-        tip = "Tu huella es significativamente mayor al promedio. Te ayudaremos a reducirla.";
-    }
-}
+        showComparisons(total) {
+            let message, icon, color, tip;
+            
+            if (total < 2.5) {
+                message = "¡Excelente!";
+                icon = "fa-check-circle";
+                color = "#4CAF50";
+                tip = "Tu huella es excelente. ¡Sos un ejemplo para otros!";
+            } else if (total < 4.0) {
+                message = "Muy bien";
+                icon = "fa-thumbs-up";
+                color = "#8BC34A";
+                tip = "Estás por debajo del promedio argentino. ¡Vas muy bien!";
+            } else if (total < 5.0) {
+                message = "En el promedio";
+                icon = "fa-info-circle";
+                color = "#FFC107";
+                tip = "Estás cerca del promedio argentino. Pequeños cambios harán diferencia.";
+            } else if (total < 7.0) {
+                message = "Oportunidad para mejorar";
+                icon = "fa-exclamation-triangle";
+                color = "#FF9800";
+                tip = "Tu huella está por encima del promedio. Nuestros consejos te ayudarán.";
+            } else {
+                message = "Atención: Huella elevada";
+                icon = "fa-exclamation-circle";
+                color = "#F44336";
+                tip = "Tu huella es significativamente mayor al promedio. Te ayudaremos a reducirla.";
+            }
             
             // Árboles necesarios para absorber el CO2 (21kg por árbol/año)
             const trees = Math.ceil((total * 1000) / 21);
