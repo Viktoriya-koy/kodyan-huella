@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardianes del Planeta - San Luis</title>
+    <title>Guardianes del Planeta</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
         
@@ -210,7 +210,7 @@
             <div class="logo"> Kodyan HQ <span>Guardianes del Planeta</span></div>
         </div>
         
-        <h1 style="text-align: center;">¡Descubrí cómo cuidar San Luis!</h1>
+        <h1 style="text-align: center;">¡Descubrí cómo cuidar este hermoso planeta!</h1>
         <p style="text-align: center; color: var(--primary-color); font-size: 1.1em;">Para niños de 6 a 12 años</p>
         
         <form id="carbonForm">
@@ -235,7 +235,7 @@
                         </button>
                     </div>
                     <div id="tip-luces" class="question-tip">
-                        ¡En San Luis hay 270 días de sol al año! Aprovechá la luz natural ☀️
+                        ¡En Argentina hay más de 200 días de sol al año! Aprovechá la luz natural ☀️
                     </div>
                 </div>
                 
@@ -275,7 +275,7 @@
                         </button>
                     </div>
                     <div id="tip-agua" class="question-tip">
-                        ¡En San Luis el agua es un tesoro! Cerrar la canilla ahorra 12 litros por minuto 💦
+                        ¡El agua es un tesoro! Cerrar la canilla ahorra 12 litros por minuto 💦
                     </div>
                 </div>
             </fieldset>
@@ -431,42 +431,42 @@
         // Tips personalizados por respuesta
         const tipsPersonalizados = {
             luces: {
-                apagar: "¡Seguí así! Apagar las luces ayuda mucho. ¿Sabías que en San Luis hay talleres de eficiencia energética para niños?",
+                apagar: "¡Seguí así! Apagar las luces ayuda mucho. ¿Sabías que hay talleres de eficiencia energética para niños on line?",
                 aveces: "Podés poner un dibujo recordatorio en la puerta de tu habitación. ¡En muchas escuelas de la provincia lo hicieron y funciona!",
                 prendidas: "Probá apagarlas hoy al salir. ¡Es como encontrar una moneda de $10 por cada luz apagada! 💰"
             },
             pantallas: {
                 apagar: "¡Perfecto! La energía que ahorraste podría cargar 10 celulares. ¡Impresionante!",
                 standby: "Los aparatos en standby gastan energía como 10 helados al año. ¡Desenchufalos! 🍦",
-                afuera: "¡Genial! En San Luis hay más de 20 plazas para jugar. ¿Conocés la más cercana a tu casa?"
+                afuera: "¡Genial! Hya muchos parques y plazas para jugar. ¿Conocés la más cercana a tu casa?"
             },
             agua: {
                 cerrar: "¡Bien hecho! El agua que ahorraste hoy equivale a 20 botellas de agua.",
                 abierta: "¿Probás cerrar la canilla hoy? ¡Cada minuto ahorrado salva mucha agua! 💧"
             },
             residuos: {
-                manualidades: "¡Creativo! En muchos centros culturales de San Luis hacen talleres con materiales reciclados.",
+                manualidades: "¡Creativo! En muchos centros culturales hacen talleres con materiales reciclados.",
                 reciclar: "¡Excelente! Si toda tu clase reciclara, podrían armar más de 10 autitos de botellas en un mes.",
                 basura: "¿Probás aplastar las botellas? Ocupan menos espacio. ¡Preguntá en tu municipio dónde hay Puntos Verdes!"
             },
             comida: {
-                compartir: "¡Qué bien! En San Luis hay programas que reciben donaciones de alimentos para quienes más necesitan.",
+                compartir: "¡Qué bien! Hay programas que reciben donaciones de alimentos para quienes más necesitan.",
                 guardar: "¡Inteligente! Guardar comida es como tener un tesoro escondido en la heladera.",
                 tirar: "La próxima vez podés pedir menos comida. ¡En muchos comedores enseñan a servir porciones justas!"
             },
             restos_comida: {
                 comer_todo: "¡Excelente! No desperdiciar comida es lo mejor para el planeta y tu salud.",
-                compost: "¡Perfecto! El compost reduce la basura y nutre la tierra. ¡San Luis promueve el compostaje!",
+                compost: "¡Perfecto! El compost reduce la basura y nutre la tierra.",
                 tirar_basura: "¿Sabías que podés hacer compost aunque vivas en departamento? Es más fácil de lo que parece."
             },
             plantas_casa: {
                 muchas: "¡Qué maravilla! Tu hogar es un pequeño pulmón verde que purifica el aire 🌿",
-                algunas: "¡Cada plantita cuenta! Podés ir agregando más poco a poco. ¡San Luis tiene viveros con plantines!",
+                algunas: "¡Cada plantita cuenta! Podés ir agregando más poco a poco.",
                 ninguna: "¿Probás empezar con una plantita fácil como un potus o una suculenta? Son muy resistentes.",
                 gustaria_tener: "¡Es un lindo proyecto! Empezá con plantas resistentes que necesiten poco cuidado."
             },
             juegos: {
-                afuera: "¡Saludable! El aire libre de San Luis es de los más limpios de Argentina. ¡Aprovechalo!",
+                afuera: "¡Saludable! El aire libre de Argentina es de los más limpios del mundo. ¡Aprovechalo!",
                 mesa: "¿Hacés manualidades? En muchas bibliotecas y centros culturales tienen talleres creativos.",
                 pantallas: "¿Sabías que hay aplicaciones educativas que te enseñan sobre ecología? ¡Podés aprender jugando!"
             }
@@ -527,10 +527,10 @@
                     case 'pantallas':
                         if (value === 'afuera') {
                             contributions.push("🏀 1 hora de juego saludable");
-                            tips.push("<li>Visitá el parque más cercano a tu casa. ¡En San Luis hay 20 para elegir!</li>");
+                            tips.push("<li>Visitá el parque más cercano a tu casa. ¡Hay muchos para elegir!</li>");
                         } else {
                             contributions.push("🔌 3 dispositivos potencialmente apagados");
-                            tips.push("<li>¿Sabías que el programa 'San Luis Digital' enseña a usar tecnología de forma eco-friendly?</li>");
+                            tips.push("<li>¿Sabías que hay programas que enseñan a usar tecnología de forma eco-friendly?</li>");
                         }
                         break;
                         
@@ -587,8 +587,8 @@
             }
             
             // Agregar tips generales
-            tips.push("<li>🌱 <strong>¡Hacé tu huerta!</strong> El programa <a href='https://sanluis.gov.ar/desarrollo-productivo/activa-huerta/' target='_blank'>Mi Huerta San Luis</a> te enseña cómo.</li>");
-            tips.push("<li>🚲 <strong>Visitá los parques:</strong> En San Luis hay más de 20 espacios verdes para explorar.</li>");
+            tips.push("<li>🌱 <strong>¡Hacé tu huerta!</strong> El programa <a href='https://www.undp.org/es/latin-america/publicaciones/practicas-agroecologicas-para-mejorar-la-huerta-familiar' target='_blank'>Mi Huerta ONU</a> te enseña cómo.</li>");
+            tips.push("<li>🚲 <strong>Visitá los parques:</strong> Hay muchos espacios verdes para descubrir y explorar.</li>");
             
             // Mostrar resultados
             contributions.forEach(item => {
